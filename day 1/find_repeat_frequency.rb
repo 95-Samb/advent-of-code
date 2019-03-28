@@ -1,5 +1,11 @@
 class FindRepeatFrequency
   def execute(input)
-    input[0] + (input[1] || 0)
+    if input.all? { |e| e.positive?}
+      nil
+    elsif input[0].zero? && input.length > 1
+      nil
+    else
+      input[0] + (input[1] || 0)
+    end
   end
 end
