@@ -47,13 +47,27 @@ describe FindRepeatFrequency do
     it_behaves_like 'it returns', -2
   end
 
-  xcontext 'for [2, -3]' do
+  context 'for [2, -3]' do
     let(:input) { [2, -3] } 
     it_behaves_like 'it returns', 0
   end
 
-  xcontext 'for [-1, 1,-1]' do
+  context 'for [-1, 1,-1]' do
     let(:input) { [-1, 1, -1] }
     it_behaves_like 'it returns', 0
   end
+  context 'for [1, 2, -3]' do
+    let(:input) { [1, 2, -3] }
+    it_behaves_like 'it returns', 0
+  end
+  context 'for [2, 3, -4]' do
+    let(:input) { [2, 3, -4] }
+    it_behaves_like 'it returns', 2
+  end
+  context 'for [3, 5, -6]' do
+    let(:input) { [3, 5, -6] }
+    it_behaves_like 'it returns', 8
+  end
+
+
 end
