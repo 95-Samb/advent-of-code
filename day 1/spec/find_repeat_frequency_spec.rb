@@ -12,6 +12,11 @@ describe FindRepeatFrequency do
     it_behaves_like 'it returns', nil
   end
 
+  context 'for [-1]' do
+    let(:input) { [-1] }
+    it_behaves_like 'it returns', nil
+  end
+
   context 'for [-1, 1]' do
     let(:input) { [-1, 1] }
     it_behaves_like 'it returns', 0

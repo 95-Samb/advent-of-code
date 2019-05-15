@@ -3,26 +3,26 @@ class FindRepeatFrequency
     first_input = input[0]
     second_input = input[1]
 
-    if input.length == 1
-      if input[0] == 0
-        return first_input
-      else
-        return nil
-      end
-    end
+    return 0 if input == [0]
 
-    if first_input.abs <= second_input.abs
-      if first_input.abs * 2 >= second_input.abs
-        unless first_input.positive? == second_input.positive?
-          0
-        end
-      end
-    elsif first_input.abs >= second_input.abs
-      if first_input.abs <= second_input.abs * 2
-        unless first_input.positive? == second_input.positive?
-          first_input
-        end
-      end
-    end
+    return nil if same_signs?(input)
+    return nil unless first_input.abs * 2 >= second_input.abs
+    return nil unless first_input.abs <= second_input.abs * 2
+
+    return 0 if converges_to_zero?(first_input, second_input)
+
+    first_input
+  end
+
+  def same_signs?(array)
+    array.all?(&:positive?) || array.all?(&:negative?)
+  end
+
+  def converges_to_zero?(first_input, second_input)
+    first_input.abs <= second_input.abs
+  end
+
+  def converges_to_first_input?(first_input, second_input)
+    first_input.abs > second_input.abs
   end
 end
