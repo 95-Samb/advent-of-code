@@ -23,9 +23,17 @@ class FindRepeatFrequency
     first_input.abs <= second_input.abs
   end
 
+  def returns_to_first_input?(array)
+    return true if array.sum == 0
+    array[0] % array.sum == 0
+  end
+
   def converges?(first_input, second_input,third_input)
+    return true if first_input + second_input + (third_input || 0) == 0
     if third_input
-      return third_input.abs <= second_input.abs + first_input.abs
+      return third_input.abs <= second_input.abs + first_input.abs &&
+      first_input.abs <= second_input.abs + third_input.abs &&
+      second_input.abs <= third_input.abs + first_input.abs
     end
     first_input.abs * 2 >= second_input.abs &&
     first_input.abs <= second_input.abs * 2
