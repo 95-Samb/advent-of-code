@@ -86,6 +86,10 @@ describe FindRepeatFrequency do
         let(:input) { [-4, 2, 3] }
         it_behaves_like 'it returns', -2
       end
+      xcontext "for [-5, 2, 4]" do
+        let(:input) { [-5, 2, 4] }
+        it_behaves_like "it returns", -3
+      end
     end
 
   end
@@ -116,14 +120,18 @@ describe FindRepeatFrequency do
   end
 
   context "for arrays returning not first_input or 0" do
+
     context 'for [3, 2, -4]' do
       let(:input) { [3, 2, -4] }
       it_behaves_like 'it returns', 5
     end
+
     context 'for [3, 5, -6]' do
       let(:input) { [3, 5, -6] }
       it_behaves_like 'it returns', 8
     end
+
+
   end
 
   context "for non-returning arrays" do
