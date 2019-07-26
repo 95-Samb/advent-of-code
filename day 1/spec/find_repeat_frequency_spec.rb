@@ -86,7 +86,7 @@ describe FindRepeatFrequency do
         let(:input) { [-4, 2, 3] }
         it_behaves_like 'it returns', -2
       end
-      xcontext "for [-5, 2, 4]" do
+      context "for [-5, 2, 4]" do
         let(:input) { [-5, 2, 4] }
         it_behaves_like "it returns", -3
       end
