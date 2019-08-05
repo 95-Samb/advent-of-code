@@ -27,25 +27,32 @@ class FindRepeatFrequency
     @sum = 0
     i = 0
     freq_array = [0]
-    while freq_array.uniq == freq_array
+    (array.max.abs * array.length + 2).times do # more work on times to do loop
+      #not as efficient as it could be
       if i == array.length
         i = 0
-        rejector(freq_array)
       end
       @sum += array[i]
       freq_array.push(@sum)
       i += 1
     end
 
-    freq_array.last
+    find_duplicate(freq_array)
   end
-  def rejector(array)
-    if @negative_array_sum > @positive_array_sum
-      array.reject! {|n| n > array.sum + @positive_array_sum}
-    elsif  @positive_array_sum > @negative_array_sum
-      array.reject! { |n| n < array.sum + @negative_array_sum }
-    else array
+
+  def find_duplicate(array)
+  map = {}
+  dup = nil
+  array.each do |v|
+    map[v] = (map[v] || 0 ) + 1
+
+    if map[v] > 1
+      dup = v
+      break
     end
   end
+
+  return dup
+end
 
 end
