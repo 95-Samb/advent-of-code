@@ -41,6 +41,18 @@ describe FindChecksum do
       let(:input) {["aab","cde"]}
       it_behaves_like 'it returns', 0
     end
+    context "for [abd,ccc]" do
+      let(:input) {["abd","ccc"]}
+      it_behaves_like 'it returns', 0
+    end
+    context "for [abd,ccc,bce]" do
+      let(:input) {["abd","ccc","bce"]}
+      it_behaves_like 'it returns', 0
+    end
+    xcontext "for [abd,ccc,bbe]" do
+      let(:input) {["abd","ccc","bbe"]}
+      it_behaves_like 'it returns', 1
+    end
   end
 
 end
