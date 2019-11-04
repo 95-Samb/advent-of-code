@@ -31,4 +31,12 @@ class FindChecksum
       0
     end
   end
+  def triple_inspector(array)
+    element_array = array[0].chars
+    if element_array.any? { |e| element_array.count(e) == 3  }
+      1
+    else
+      0
+    end
+  end
 end
