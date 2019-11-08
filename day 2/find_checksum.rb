@@ -1,42 +1,26 @@
 class FindChecksum
   def send(input)
 
-    array_of_values = []
-
-    second_input = input[1] ? input[1] : ""
-
     return nil if input.empty?
 
     i = 0
+    @double_sum = 0
+    @triple_sum = 0
 
     while i < input.length
-      if input[i].chars.uniq != input[i].chars
-        array_of_values.push(1)
-        i += 1
-      else
-        array_of_values.push(0)
-        i += 1
-      end
+      @double_sum += 1 if double_inspector(input[i])
+      @triple_sum += 1 if triple_inspector(input[i])
+      i += 1
     end
-
-    array_of_values.inject(:*)
-
+  @double_sum * @triple_sum
   end
 
-  def double_inspector(array)
-    element_array = array[0].chars
-    if element_array.any? { |e| element_array.count(e) == 2  }
-      1
-    else
-      0
-    end
+  def double_inspector(box_id)
+    box_id.chars.any? { |e| box_id.count(e) == 2  } ?
+      true : false
   end
-  def triple_inspector(array)
-    element_array = array[0].chars
-    if element_array.any? { |e| element_array.count(e) == 3  }
-      1
-    else
-      0
-    end
+  def triple_inspector(box_id)
+    box_id.chars.any? { |e| box_id.count(e) == 3  } ?
+      true : false
   end
 end

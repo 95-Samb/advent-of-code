@@ -5,7 +5,7 @@ input = File.read('input.txt')
 box_ids = InputConverter.new.convert(input)
 
 # get the answer from the other component
-answer = FindChecksum.new.execute(box_ids)
+answer = FindChecksum.new.send(box_ids)
 
 # spit out the answer
 puts answer
