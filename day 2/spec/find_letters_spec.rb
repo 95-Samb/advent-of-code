@@ -79,6 +79,10 @@ describe FindSimilarBoxIdLetters do
     let(:input) {["de","ac","ab"]}
     it_behaves_like 'it returns', "a"
   end
+  context "for [de,ac,ab]" do
+    let(:input) {["ac","de","ab"]}
+    it_behaves_like 'it returns', "a"
+  end
   context "for same_letters method" do
     it "returns array of joint values" do
       expect(x.same_letters("ab","ac")).to eq("a")

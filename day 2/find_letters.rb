@@ -4,10 +4,19 @@ class FindSimilarBoxIdLetters
     string_length = input[0].length
     common_letters = {}
     i = 0
+    j = 1
     while i + 1 < input.length
-      same_string = (same_letters(input[i],input[i + 1]))
-      common_letters[same_string.length] = same_string
-      i += 1
+      while i + j < input.length
+        same_string = (same_letters(input[i],input[i + j]))
+        common_letters[same_string.length] = same_string
+        j += 1
+      end
+      if common_letters[string_length - 1]
+        break
+      else
+        i += 1
+        j = 1
+      end
     end
 
 
