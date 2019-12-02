@@ -1,101 +1,102 @@
-require_relative "../find_letters"
+# frozen_string_literal: true
+
+require_relative '../find_letters'
 
 describe FindSimilarBoxIdLetters do
   x = FindSimilarBoxIdLetters.new
-  shared_examples "it returns" do |parameter|
-    it "#{parameter}" do
+  shared_examples 'it returns' do |parameter|
+    it parameter.to_s do
       expect(subject.send(input)).to eq(parameter)
     end
   end
-  context "for []" do
-    let(:input) {[]}
+  context 'for []' do
+    let(:input) { [] }
     it_behaves_like 'it returns', nil
   end
-  context "for two inputs of length 2" do
-    context "for [ab,ac]" do
-      let(:input) {["ab","ac"]}
-      it_behaves_like 'it returns', "a"
+  context 'for two inputs of length 2' do
+    context 'for [ab,ac]' do
+      let(:input) { %w[ab ac] }
+      it_behaves_like 'it returns', 'a'
     end
-    context "for [ab,dc]" do
-      let(:input) {["ab","dc"]}
+    context 'for [ab,dc]' do
+      let(:input) { %w[ab dc] }
       it_behaves_like 'it returns', nil
     end
-    context "for [db,dc]" do
-      let(:input) {["db","dc"]}
-      it_behaves_like 'it returns', "d"
+    context 'for [db,dc]' do
+      let(:input) { %w[db dc] }
+      it_behaves_like 'it returns', 'd'
     end
-    context "for [ab,cb]" do
-      let(:input) {["ab","cb"]}
-      it_behaves_like 'it returns', "b"
+    context 'for [ab,cb]' do
+      let(:input) { %w[ab cb] }
+      it_behaves_like 'it returns', 'b'
     end
   end
-  context "for two inputs of length 3" do
-    context "for [abc,def]" do
-      let(:input) {["abc","def"]}
+  context 'for two inputs of length 3' do
+    context 'for [abc,def]' do
+      let(:input) { %w[abc def] }
       it_behaves_like 'it returns', nil
     end
-    context "for [abc,aef]" do
-      let(:input) {["abc","aef"]}
+    context 'for [abc,aef]' do
+      let(:input) { %w[abc aef] }
       it_behaves_like 'it returns', nil
     end
-    context "for [abc,abf]" do
-      let(:input) {["abc","abf"]}
-      it_behaves_like 'it returns', "ab"
+    context 'for [abc,abf]' do
+      let(:input) { %w[abc abf] }
+      it_behaves_like 'it returns', 'ab'
     end
-    context "for [aac,aaf]" do
-      let(:input) {["aac","aaf"]}
-      it_behaves_like 'it returns', "aa"
+    context 'for [aac,aaf]' do
+      let(:input) { %w[aac aaf] }
+      it_behaves_like 'it returns', 'aa'
     end
-    context "for [cba,abc]" do
-      let(:input) {["cba","abc"]}
+    context 'for [cba,abc]' do
+      let(:input) { %w[cba abc] }
       it_behaves_like 'it returns', nil
     end
-    context "for [aac,aca]" do
-      let(:input) {["aac","aca"]}
+    context 'for [aac,aca]' do
+      let(:input) { %w[aac aca] }
       it_behaves_like 'it returns', nil
     end
-    context "for [abcd,efgh]" do
-      let(:input) {["abcd","efgh"]}
+    context 'for [abcd,efgh]' do
+      let(:input) { %w[abcd efgh] }
       it_behaves_like 'it returns', nil
     end
   end
-  context "for [abcd,efcd]" do
-    let(:input) {["abcd","efcd"]}
+  context 'for [abcd,efcd]' do
+    let(:input) { %w[abcd efcd] }
     it_behaves_like 'it returns', nil
   end
-  context "for [afcd,efcd]" do
-    let(:input) {["afcd","efcd"]}
-    it_behaves_like 'it returns', "fcd"
+  context 'for [afcd,efcd]' do
+    let(:input) { %w[afcd efcd] }
+    it_behaves_like 'it returns', 'fcd'
   end
-  context "for [afcdaaaa,efcdbbbb]" do
-    let(:input) {["afcdaaaa","efcdbbbb"]}
+  context 'for [afcdaaaa,efcdbbbb]' do
+    let(:input) { %w[afcdaaaa efcdbbbb] }
     it_behaves_like 'it returns', nil
   end
-  context "for [ab,ac,de]" do
-    let(:input) {["ab","ac","de"]}
-    it_behaves_like 'it returns', "a"
+  context 'for [ab,ac,de]' do
+    let(:input) { %w[ab ac de] }
+    it_behaves_like 'it returns', 'a'
   end
-  context "for [de,ac,ab]" do
-    let(:input) {["de","ac","ab"]}
-    it_behaves_like 'it returns', "a"
+  context 'for [de,ac,ab]' do
+    let(:input) { %w[de ac ab] }
+    it_behaves_like 'it returns', 'a'
   end
-  context "for [de,ac,ab]" do
-    let(:input) {["ac","de","ab"]}
-    it_behaves_like 'it returns', "a"
+  context 'for [de,ac,ab]' do
+    let(:input) { %w[ac de ab] }
+    it_behaves_like 'it returns', 'a'
   end
-  context "for same_letters method" do
-    it "returns array of joint values" do
-      expect(x.same_letters("ab","ac")).to eq("a")
+  context 'for same_letters method' do
+    it 'returns array of joint values' do
+      expect(x.same_letters('ab', 'ac')).to eq('a')
     end
-    it "returns array of joint values" do
-      expect(x.same_letters("abcde","acdef")).to eq("a")
+    it 'returns array of joint values' do
+      expect(x.same_letters('abcde', 'acdef')).to eq('a')
     end
-    it "returns array of joint values" do
-      expect(x.same_letters("aaabb","aaacc")).to eq("aaa")
+    it 'returns array of joint values' do
+      expect(x.same_letters('aaabb', 'aaacc')).to eq('aaa')
     end
-    it "returns array of joint values" do
-      expect(x.same_letters("abcdefg","abefcdg")).to eq("abg")
+    it 'returns array of joint values' do
+      expect(x.same_letters('abcdefg', 'abefcdg')).to eq('abg')
     end
   end
-
 end
