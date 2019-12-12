@@ -51,7 +51,7 @@ describe FindChecksum do
       let(:input) { %w[abd ccc bce] }
       it_behaves_like 'it returns', 0
     end
-    xcontext 'for [abd,ccc,bbe]' do
+    context 'for [abd,ccc,bbe]' do
       let(:input) { %w[abd ccc bbe] }
       it_behaves_like 'it returns', 1
     end
