@@ -28,6 +28,20 @@ describe Intcode do
     it "returns 2,4,0,0,1,0,0,1,99 for 1,0,0,0,1,0,0,1,99" do
       expect(Intcode.new.execute([1,0,0,0,1,0,0,1,99])).to eq([2,4,0,0,1,0,0,1,99])
     end
+    it "returns 2,4,0,0,2,0,0,1,99 for 1,0,0,0,2,0,0,1,99" do
+      expect(Intcode.new.execute([1,0,0,0,2,0,0,1,99])).to eq([2,4,0,0,2,0,0,1,99])
+    end
+    it "returns 1,1,1,0,2,0,0,1,99 for 1,0,1,0,2,0,0,1,99" do
+      expect(Intcode.new.execute([1,0,1,0,2,0,0,1,99])).to eq([1,1,1,0,2,0,0,1,99])
+    end
+    it "returns 1,1,4,1,2,0,0,1,99 for 1,0,4,1,2,0,0,1,99" do
+      expect(Intcode.new.execute([1,0,4,1,2,0,0,1,99])).to eq([1,1,4,1,2,0,0,1,99])
+    end
+  end
+  context "for a triple opcode before 99" do
+    it "returns 4,8,0,0,1,0,0,0,1,0,0,1,99 for 1,0,0,0,1,0,0,0,1,0,0,1,99" do
+      expect(Intcode.new.execute([1,0,0,0,1,0,0,0,1,0,0,1,99])).to eq([4,8,0,0,1,0,0,0,1,0,0,1,99])
+    end
   end
 
 end
