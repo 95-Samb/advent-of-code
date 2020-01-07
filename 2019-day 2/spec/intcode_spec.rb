@@ -23,6 +23,9 @@ describe Intcode do
     it "returns 1,0,1,2,99,0 for 1,0,5,2,99,0" do
       expect(Intcode.new.execute([1,0,5,2,99,0])).to eq([1,0,1,2,99,0])
     end
+    it "returns 1,6,2,2,99,0,2 for 1,6,5,2,99,0,2" do
+      expect(Intcode.new.execute([1,6,5,2,99,0,2])).to eq([1,6,2,2,99,0,2])
+    end
   end
   context "for a double opcode before 99" do
     it "returns 2,4,0,0,1,0,0,1,99 for 1,0,0,0,1,0,0,1,99" do

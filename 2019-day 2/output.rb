@@ -1,5 +1,4 @@
 require_relative "intcode.rb"
-require_relative "input.txt"
 require_relative "input_converter"
 
 
