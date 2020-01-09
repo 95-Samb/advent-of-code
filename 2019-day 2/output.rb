@@ -1,9 +1,10 @@
-require_relative "intcode.rb"
-require_relative "input_converter"
+# frozen_string_literal: true
 
+require_relative 'intcode.rb'
+require_relative 'input_converter'
 
 input = File.read('input.txt')
-opcodes= InputConverter.new.convert(input)
+opcodes = InputConverter.new.convert(input)
 
 answer = Intcode.new.execute(opcodes)
 

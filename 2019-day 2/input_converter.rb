@@ -2,6 +2,6 @@
 
 class InputConverter
   def convert(input)
-    input.split(",").map(&:to_i)
+    input.split(',').map(&:to_i)
   end
 end
