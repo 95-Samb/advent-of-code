@@ -24,7 +24,7 @@ describe NounVerbFinder do
       expect(NounVerbFinder.new.execute([2,0,0,0,99], 2)).to eq([1,0])
     end
   end
-  xit "returns 3,0 for opcode 1,0,0,0,1,0,0,0,99 and output 2" do
-    expect(NounVerbFinder.new.execute([1,0,0,0,1,0,0,0,99], 2)).to eq([3,0])
+  it "returns 0,1 for opcode 1,0,0,0,1,0,0,0,99 and output 2" do
+    expect(NounVerbFinder.new.execute([1,0,0,0,1,0,0,0,99], 2)).to eq([0,1])
   end
 end

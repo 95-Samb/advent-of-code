@@ -15,3 +15,6 @@ class FindSameFabric
     end
   end
 end
+
+
+#create hash {(0,0 = 2),(0,1 = 1),(1,0 = 1),(1,1 = 1)}

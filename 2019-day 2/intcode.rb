@@ -12,5 +12,7 @@ class Intcode
       i += 4
     end
     input
+  # rescue NoMethodError
+  #   return nil
   end
 end
