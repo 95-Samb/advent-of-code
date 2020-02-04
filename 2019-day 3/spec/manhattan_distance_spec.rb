@@ -14,22 +14,22 @@ describe ManhattanDistance do
   end
   context "for route method" do
     it "returns [1,0] for [0,0] & R1" do
-      expect(ManhattanDistance.new.route(["0","0"],"R1")).to eq([1,0])
+      expect(ManhattanDistance.new.route(["0","0"],"R1")).to eq([[1,0]])
     end
-    it "returns [9,0] for [0,0] & R9" do
-      expect(ManhattanDistance.new.route(["0","0"],"R9")).to eq([9,0])
+    it "returns [1,0] upto [9,0] for [0,0] & R9" do
+      expect(ManhattanDistance.new.route(["0","0"],"R9")).to eq([[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0],[8,0],[9,0]])
     end
-    it "returns [9,3] for [4,3] & R5" do
-      expect(ManhattanDistance.new.route(["4","3"],"R5")).to eq([9,3])
+    it "returns [5,3] upto [9,3] for [4,3] & R5" do
+      expect(ManhattanDistance.new.route(["4","3"],"R5")).to eq([[5,3],[6,3],[7,3],[8,3],[9,3]])
     end
-    it "returns [2,7] for [2,2] & U5" do
-      expect(ManhattanDistance.new.route(["2","2"],"U5")).to eq([2,7])
+    it "returns [2,3] upto [2,7] for [2,2] & U5" do
+      expect(ManhattanDistance.new.route(["2","2"],"U5")).to eq([[2,3],[2,4],[2,5],[2,6],[2,7]])
     end
-    it "returns [2,-1] for [2,2] & D3" do
-      expect(ManhattanDistance.new.route(["2","2"],"D3")).to eq([2,-1])
+    it "returns [2,1] upto [2,-1] for [2,2] & D3" do
+      expect(ManhattanDistance.new.route(["2","2"],"D3")).to eq([[2,1],[2,0],[2,-1]])
     end
-    it "returns [-1,2] for [2,2] & L3" do
-      expect(ManhattanDistance.new.route(["2","2"],"L3")).to eq([-1,2])
+    it "returns [1,2] upto [-1,2] for [2,2] & L3" do
+      expect(ManhattanDistance.new.route(["2","2"],"L3")).to eq([[1,2],[0,2],[-1,2]])
     end
   end
 end
