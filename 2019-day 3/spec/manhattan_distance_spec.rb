@@ -1,14 +1,14 @@
 require_relative "../manhattan_distance"
 
 describe ManhattanDistance do
-  xcontext "for execute method" do
+  context "for execute method" do
     it "returns nil for ['R1','L1']" do
       expect(ManhattanDistance.new.execute(["R1","L1"])).to eq(nil)
     end
-    it "returns 2 for ['R1,U1','U1,R1']" do
+    xit "returns 2 for ['R1,U1','U1,R1']" do
       expect(ManhattanDistance.new.execute(["R1,U1","U1,R1"])).to eq(2)
     end
-    it "returns 1 for ['R1,U1,L1','U1']" do
+    xit "returns 1 for ['R1,U1,L1','U1']" do
       expect(ManhattanDistance.new.execute(["R1,U1,L1","U1"])).to eq(1)
     end
   end
@@ -30,6 +30,13 @@ describe ManhattanDistance do
     end
     it "returns [1,2] upto [-1,2] for [2,2] & L3" do
       expect(ManhattanDistance.new.route(["2","2"],"L3")).to eq([[1,2],[0,2],[-1,2]])
+    end
+  end
+
+  context "for all_points method" do
+    it "returns [[[1,0],[1,1]],[[0,1],[1,1]]] for ['R1,U1','U1,R1']" do
+      expect(ManhattanDistance.new.all_points(['R1,U1','U1,R1'])).to eq(
+      [[[1,0],[1,1]],[[0,1],[1,1]]])
     end
   end
 end

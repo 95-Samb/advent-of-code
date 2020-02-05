@@ -1,5 +1,10 @@
 class ManhattanDistance
   def execute(input)
+    intersections = all_points(input)[0] & all_points(input)[1]
+    if intersections.empty?
+      nil
+    else intersections
+    end
   end
   def route(starting_point,input)
     starting_point.map!(&:to_i)
@@ -32,6 +37,29 @@ class ManhattanDistance
     input.gsub(/[RLUD]/ ,"U" => "","D" => "-",
       "R" => "","L" => "-").to_i
   end
+
+  def all_points(input)
+    first_wire_points = [[0,0]]
+    second_wire_points = [[0,0]]
+    i = 0
+    first_wire_instructions = input[0].split(",")
+    until i ==  first_wire_instructions.length
+      wire_coords = (route(first_wire_points.dup[-1],first_wire_instructions[i]))
+      first_wire_points += wire_coords
+      i += 1
+    end
+    first_wire_points.pop
+    j = 0
+    second_wire_instructions = input[1].split(",")
+    until j ==  second_wire_instructions.length
+      wire_coords = (route(second_wire_points.dup[-1],second_wire_instructions[j]))
+      second_wire_points += wire_coords
+      j += 1
+    end
+    second_wire_points.pop
+    [first_wire_points,second_wire_points]
+  end
+
 
 end
 
