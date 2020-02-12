@@ -5,10 +5,10 @@ describe ManhattanDistance do
     it "returns nil for ['R1','L1']" do
       expect(ManhattanDistance.new.execute(["R1","L1"])).to eq(nil)
     end
-    xit "returns 2 for ['R1,U1','U1,R1']" do
+    it "returns 2 for ['R1,U1','U1,R1']" do
       expect(ManhattanDistance.new.execute(["R1,U1","U1,R1"])).to eq(2)
     end
-    xit "returns 1 for ['R1,U1,L1','U1']" do
+    it "returns 1 for ['R1,U1,L1','U1']" do
       expect(ManhattanDistance.new.execute(["R1,U1,L1","U1"])).to eq(1)
     end
   end
@@ -31,12 +31,31 @@ describe ManhattanDistance do
     it "returns [1,2] upto [-1,2] for [2,2] & L3" do
       expect(ManhattanDistance.new.route(["2","2"],"L3")).to eq([[1,2],[0,2],[-1,2]])
     end
+    it "returns [1,0] upto [1,-1] for [1,1] & D2" do
+      expect(ManhattanDistance.new.route(["1","1"],"D2")).to eq([[1,0],[1,-1]])
+    end
   end
 
   context "for all_points method" do
     it "returns [[[1,0],[1,1]],[[0,1],[1,1]]] for ['R1,U1','U1,R1']" do
       expect(ManhattanDistance.new.all_points(['R1,U1','U1,R1'])).to eq(
       [[[1,0],[1,1]],[[0,1],[1,1]]])
+    end
+    it "returns [[[1,0],[1,1],[1,0],[1,-1]],[[0,1],[1,1],[1,2],[1,3]]] for ['R1,U1,D3','U1,R1,U3']" do
+      expect(ManhattanDistance.new.all_points(['R1,U1,D3','U1,R1,U3'])).to eq(
+      [[[1,0],[1,1],[1,0],[1,-1],[1,-2]],[[0,1],[1,1],[1,2],[1,3],[1,4]]])
+    end
+  end
+
+  context "for distance_manhattan method" do
+    it "returns [1] for [[1,0]]" do
+      expect(ManhattanDistance.new.distance_manhattan([[1,0]])).to eq([1])
+    end
+    it "returns [2] for [[1,1]]" do
+      expect(ManhattanDistance.new.distance_manhattan([[1,1]])).to eq([2])
+    end
+    it "returns [1,2] for [[1,0],[1,1]]" do
+      expect(ManhattanDistance.new.distance_manhattan([[1,0],[1,1]])).to eq([1,2])
     end
   end
 end

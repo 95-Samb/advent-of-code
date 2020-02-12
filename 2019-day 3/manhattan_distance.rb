@@ -5,24 +5,31 @@ class ManhattanDistance
       nil
     else intersections
     end
+    distances = distance_manhattan(intersections)
+    distances.sort[0]
+  end
+
+  def distance_manhattan(input)
+    output = input.dup
+    output.map(&:sum)
   end
   def route(starting_point,input)
-    starting_point.map!(&:to_i)
+    current_point = starting_point.dup.map(&:to_i)
     route_points = []
 
     if horizontal?(input)
       vector = translate_instruction(input)
       vector_direction = vector <=> 0
       vector.abs.times do
-        starting_point[0] += vector_direction
-        route_points.push(starting_point.dup)
+        current_point[0] += vector_direction
+        route_points.push(current_point.dup)
       end
     else
       vector = translate_instruction(input)
       vector_direction = vector <=> 0
       vector.abs.times do
-        starting_point[1] += vector_direction
-        route_points.push(starting_point.dup)
+        current_point[1] += vector_direction
+        route_points.push(current_point.dup)
       end
     end
 
@@ -48,7 +55,7 @@ class ManhattanDistance
       first_wire_points += wire_coords
       i += 1
     end
-    first_wire_points.pop
+    first_wire_points.shift
     j = 0
     second_wire_instructions = input[1].split(",")
     until j ==  second_wire_instructions.length
@@ -56,7 +63,7 @@ class ManhattanDistance
       second_wire_points += wire_coords
       j += 1
     end
-    second_wire_points.pop
+    second_wire_points.shift
     [first_wire_points,second_wire_points]
   end
 
