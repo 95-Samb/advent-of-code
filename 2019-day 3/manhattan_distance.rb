@@ -11,7 +11,7 @@ class ManhattanDistance
 
   def distance_manhattan(input)
     output = input.dup
-    output.map(&:sum)
+    output.map! { |e| e.map(&:abs).sum  }
   end
   def route(starting_point,input)
     current_point = starting_point.dup.map(&:to_i)
