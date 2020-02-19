@@ -68,4 +68,28 @@ describe ManhattanDistance do
       expect(ManhattanDistance.new.distance_manhattan([[-1,-1]])).to eq([2])
     end
   end
+  context "for the intersection steps method" do
+    it "returns [2,2] for [1,1] and [[[1,0],[1,1]],[[0,1],[1,1]]]" do
+      expect(ManhattanDistance.new.intersection_steps([1,1],
+        [[[1,0],[1,1]],[[0,1],[1,1]]])).to eq([2,2])
+    end
+    it "returns [3,3] for [1,2] and [[[1,0],[1,1],[1,2]],[[0,1],[0,2],[1,2]]]" do
+      expect(ManhattanDistance.new.intersection_steps([1,2],
+        [[[1,0],[1,1],[1,2]],[[0,1],[0,2],[1,2]]])).to eq([3,3])
+    end
+    it "returns [3,3] for [1,-2] and [[[1,0],[1,-1],[1,-2]],[[0,-1],[0,-2],[1,-2]]]" do
+      expect(ManhattanDistance.new.intersection_steps([1,-2],
+        [[[1,0],[1,-1],[1,-2]],[[0,-1],[0,-2],[1,-2]]])).to eq([3,3])
+    end
+  end
+  context "for the quickest intersection method" do
+    it "returns [1,1] for ['R1,U1','U1,R1']" do
+      expect(ManhattanDistance.new.quickest_intersection(['R1,U1','U1,R1'])).
+      to eq([1,1])
+    end
+    it "returns [1,1] for ['U1,R4,D2,L3,U1','R3,U2']" do
+      expect(ManhattanDistance.new.quickest_intersection(['U1,R4,D2,L3,U1','R3,U2'])).
+      to eq([1,0])
+    end
+  end
 end

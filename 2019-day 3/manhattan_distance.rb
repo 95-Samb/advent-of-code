@@ -9,6 +9,19 @@ class ManhattanDistance
     distances.sort[0]
   end
 
+  def quickest_intersection(input)
+    intersections = all_points(input)[0] & all_points(input)[1]
+    if intersections.empty?
+      nil
+    else intersections
+    end
+    intersections.sort[0]
+  end
+
+  def intersection_steps(intersection,all_points)
+    [all_points[0].index(intersection) + 1,all_points[1].index(intersection) + 1]
+  end
+
   def distance_manhattan(input)
     output = input.dup
     output.map! { |e| e.map(&:abs).sum  }
