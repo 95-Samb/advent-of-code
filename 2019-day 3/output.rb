@@ -7,4 +7,8 @@ wires = InputConverter.new.convert(input)
 
 answer = ManhattanDistance.new.execute(wires)
 
+second_answer = ManhattanDistance.new.quickest_intersection(wires)
+
 puts answer
+
+puts second_answer

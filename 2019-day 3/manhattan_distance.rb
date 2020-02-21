@@ -15,17 +15,18 @@ class ManhattanDistance
       nil
     else intersections
     end
-    intersections.sort[0]
+    intersections.sort_by{|intersection| intersection_steps(intersection,input)}[0]
   end
 
-  def intersection_steps(intersection,all_points)
-    [all_points[0].index(intersection) + 1,all_points[1].index(intersection) + 1]
+  def intersection_steps(intersection,input)
+    [all_points(input)[0].index(intersection) + 1,all_points(input)[1].index(intersection) + 1].sum
   end
 
   def distance_manhattan(input)
     output = input.dup
     output.map! { |e| e.map(&:abs).sum  }
   end
+
   def route(starting_point,input)
     current_point = starting_point.dup.map(&:to_i)
     route_points = []
