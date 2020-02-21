@@ -1,6 +1,7 @@
 class ManhattanDistance
   def execute(input)
-    intersections = all_points(input)[0] & all_points(input)[1]
+    all_points = all_points(input)
+    intersections = all_points[0] & all_points[1]
     if intersections.empty?
       nil
     else intersections
@@ -10,12 +11,13 @@ class ManhattanDistance
   end
 
   def second_execute(input)
-    intersection = quickest_intersection(input)
-    all_points(input)[0].index(intersection) + all_points(input)[1].index(intersection) + 2
+    all_points = all_points(input)
+    intersection = quickest_intersection(all_points)
+    all_points[0].index(intersection) + all_points[1].index(intersection) + 2
   end
 
   def quickest_intersection(input)
-    intersections = all_points(input)[0] & all_points(input)[1]
+    intersections = input[0] & input[1]
     if intersections.empty?
       nil
     else intersections
@@ -24,7 +26,7 @@ class ManhattanDistance
   end
 
   def intersection_steps(intersection,input)
-    [all_points(input)[0].index(intersection) + 1,all_points(input)[1].index(intersection) + 1].sum
+    input[0].index(intersection) + input[1].index(intersection) +2
   end
 
   def distance_manhattan(input)

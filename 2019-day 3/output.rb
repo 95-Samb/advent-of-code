@@ -12,3 +12,6 @@ second_answer = ManhattanDistance.new.second_execute(wires)
 puts answer
 
 puts second_answer
+
+#pre refactor time = 35.719
+#post refactor time = 2.234
