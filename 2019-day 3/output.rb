@@ -1,5 +1,7 @@
-require_relative "input_converter"
-require_relative "manhattan_distance"
+# frozen_string_literal: true
+
+require_relative 'input_converter'
+require_relative 'manhattan_distance'
 
 input = File.read('input.txt')
 
@@ -13,5 +15,5 @@ puts answer
 
 puts second_answer
 
-#pre refactor time = 35.719
-#post refactor time = 2.234
+# pre refactor time = 35.719
+# post refactor time = 2.234
