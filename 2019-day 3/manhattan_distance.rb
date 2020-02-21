@@ -9,6 +9,11 @@ class ManhattanDistance
     distances.sort[0]
   end
 
+  def second_execute(input)
+    intersection = quickest_intersection(input)
+    all_points(input)[0].index(intersection) + all_points(input)[1].index(intersection) + 2
+  end
+
   def quickest_intersection(input)
     intersections = all_points(input)[0] & all_points(input)[1]
     if intersections.empty?
