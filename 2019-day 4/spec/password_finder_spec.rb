@@ -71,5 +71,22 @@ describe PasswordFinder do
     it "returns false for 111" do
       expect(PasswordFinder.new.has_adjacent_pair?(111)).to eq(false)
     end
+    it "returns true for 1122" do
+      expect(PasswordFinder.new.has_adjacent_pair?(1122)).to eq(true)
+    end
+    it "returns true for 111122" do
+      expect(PasswordFinder.new.has_adjacent_pair?(111122)).to eq(true)
+    end
+    it "returns false for 111222" do
+      expect(PasswordFinder.new.has_adjacent_pair?(111222)).to eq(false)
+    end
+    it "returns true for 112345" do
+      expect(PasswordFinder.new.has_adjacent_pair?(112345)).to eq(true)
+    end
+  end
+  context "for the second execute method" do
+    it "returns [122,112] for [111,122,222,112]" do
+      expect(PasswordFinder.new.second_execute([111,122,222,112])).to eq([122,112])
+    end
   end
 end

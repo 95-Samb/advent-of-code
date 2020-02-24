@@ -1,17 +1,25 @@
 class PasswordFinder
 
   def execute(lower_limit,upper_limit)
+    possible_passwords(lower_limit,upper_limit).length
+  end
+
+  def possible_passwords(lower_limit,upper_limit)
     i = lower_limit.dup
-    password_array = []
+    @password_array = []
     until i == upper_limit + 1
       if duplicate_adjacent_number(i) && increasing_digits?(i)
-        password_array.push(i)
+        @password_array.push(i)
         i += 1
       else
         i += 1
       end
     end
-    password_array.length
+    @password_array
+  end
+
+  def second_execute(input)
+    input.delete_if { |e| !has_adjacent_pair?(e)  }
   end
 
   def duplicate_adjacent_number(input)
@@ -40,10 +48,9 @@ class PasswordFinder
     true
   end
   def has_adjacent_pair?(input)
-    if input.to_s.length == 2
-      true
-    else
-      false
-    end
+    input_array = input.to_s.split("").map(&:to_i)
+    elements = input_array.uniq
+    return true if elements.any? { |e| input_array.count(e) == 2 }
+    false
   end
 end
