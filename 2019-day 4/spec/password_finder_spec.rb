@@ -64,4 +64,12 @@ describe PasswordFinder do
       expect(PasswordFinder.new.execute(111,122)).to eq(10)
     end
   end
+  context "for the has_adjacent_pair? method" do
+    it "returns true for 11" do
+      expect(PasswordFinder.new.has_adjacent_pair?(11)).to eq(true)
+    end
+    it "returns false for 111" do
+      expect(PasswordFinder.new.has_adjacent_pair?(111)).to eq(false)
+    end
+  end
 end

@@ -39,4 +39,11 @@ class PasswordFinder
     end
     true
   end
+  def has_adjacent_pair?(input)
+    if input.to_s.length == 2
+      true
+    else
+      false
+    end
+  end
 end
