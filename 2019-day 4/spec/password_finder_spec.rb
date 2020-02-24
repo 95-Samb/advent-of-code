@@ -34,5 +34,34 @@ describe PasswordFinder do
     it "returns true for 21" do
       expect(PasswordFinder.new.increasing_digits?(21)).to eq(false)
     end
+    it "returns true for 112" do
+      expect(PasswordFinder.new.increasing_digits?(112)).to eq(true)
+    end
+    it "returns false for 121" do
+      expect(PasswordFinder.new.increasing_digits?(121)).to eq(false)
+    end
+    it "returns true for 122234" do
+      expect(PasswordFinder.new.increasing_digits?(122234)).to eq(true)
+    end
+    it "returns false for 122243" do
+      expect(PasswordFinder.new.increasing_digits?(122243)).to eq(false)
+    end
+    it "returns false for 123432" do
+      expect(PasswordFinder.new.increasing_digits?(123432)).to eq(false)
+    end
+    it "returns true for 122334" do
+      expect(PasswordFinder.new.increasing_digits?(122334)).to eq(true)
+    end
+  end
+  context "for the execute method" do
+    it "returns 0 for 19 and 20" do
+      expect(PasswordFinder.new.execute(19,20)).to eq(0)
+    end
+    it "returns 1 for 11 and 12" do
+      expect(PasswordFinder.new.execute(11,12)).to eq(1)
+    end
+    it "returns 10 for 111 and 122" do
+      expect(PasswordFinder.new.execute(111,122)).to eq(10)
+    end
   end
 end
