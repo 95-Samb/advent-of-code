@@ -46,7 +46,7 @@ describe NewIntcode do
       expect(NewIntcode.new.execute(nil,[1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 99])[0]).to eq([4, 8, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 99])
     end
   end
-  context "for opcode with 3 instruction" do
+  context "for opcode with 3 and 4 instructions" do
     it "returns 1 for [3,0,4,0,99] and 1" do
       expect(NewIntcode.new.execute(1,[3,0,4,0,99])).to eq([[1,0,4,0,99],[1]])
     end
@@ -55,6 +55,29 @@ describe NewIntcode do
     end
     it "returns 3 for [3,1,4,0,99] and 2" do
       expect(NewIntcode.new.execute(2,[3,1,4,0,99])).to eq([[3,2,4,0,99],[3]])
+    end
+    it "returns 1 for [3,0,1,2,2,1,4,0,99] and 1" do
+      expect(NewIntcode.new.execute(1,[3,0,1,2,2,1,4,0,99])).to eq([[1,2,1,2,2,1,4,0,99],[1]])
+    end
+    it "returns 1 for [3,0,2,2,2,1,4,0,99] and 1" do
+      expect(NewIntcode.new.execute(1,[3,0,2,2,2,1,4,0,99])).to eq([[1,4,2,2,2,1,4,0,99],[1]])
+    end
+    it "returns 4 for [3,0,4,2,99] and 5" do
+      expect(NewIntcode.new.execute(5,[3,0,4,2,99])).to eq([[5,0,4,2,99],[4]])
+    end
+    it "returns 4,4 for [3,0,4,2,4,2,99] and 5" do
+      expect(NewIntcode.new.execute(5,[3,0,4,2,4,2,99])).to eq([[5,0,4,2,4,2,99],[4,4]])
+    end
+    it "returns 4,4 for [3,0,4,2,4,2,1,0,1,1,99] and 5" do
+      expect(NewIntcode.new.execute(5,[3,0,4,2,4,2,1,0,1,1,99])).to eq([[5,5,4,2,4,2,1,0,1,1,99],[4,4]])
+    end
+  end
+  context "for opcode instructions longer than a digit" do
+    it "returns [2,1,1,0,99] for [01,1,1,0,99]" do
+      expect(NewIntcode.new.execute(1,[01,1,1,0,99])[0]).to eq([2,1,1,0,99])
+    end
+    it "returns [2,1,1,0,99] for [101,1,1,0,99]" do
+      expect(NewIntcode.new.execute(1,[101,1,1,0,99])[0]).to eq([2,1,1,0,99])
     end
   end
 end
