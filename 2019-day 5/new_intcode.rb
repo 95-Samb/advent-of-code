@@ -4,19 +4,27 @@ class NewIntcode
     i = 0
     while input[i] != 99
       instruction = input[i].digits[0]
+      first_parameter_state = input[i].digits[2]
+      second_parameter_state = input[i].digits[3]
       cycle = if instruction == 1 || instruction == 2
                 4
               else 2
               end
+      if first_parameter_state == 1
+        first_parameter = input[i + 1]
+      else first_parameter = input[input[i + 1]]
+      end
+      if second_parameter_state == 1
+        second_parameter = input[i + 2]
+      else second_parameter = input[input[i + 2]]
+      end
       if instruction == 1
-        input[input[i + 3]] = input[input[i + 1]] + input[input[i + 2]]
+        input[input[i + 3]] = first_parameter + second_parameter
       elsif instruction == 2
-        input[input[i + 3]] = input[input[i + 1]] * input[input[i + 2]]
+        input[input[i + 3]] = first_parameter * second_parameter
       end
       input[input[i + 1]] = integer_input if instruction == 3
-      if instruction == 4
-        output.push(input[input[i + 1]])
-      end
+      output.push(input[input[i + 1]]) if instruction == 4
       i += cycle
     end
     [input,output]

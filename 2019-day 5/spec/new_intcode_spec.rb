@@ -79,5 +79,23 @@ describe NewIntcode do
     it "returns [2,1,1,0,99] for [101,1,1,0,99]" do
       expect(NewIntcode.new.execute(1,[101,1,1,0,99])[0]).to eq([2,1,1,0,99])
     end
+    it "returns [4,2,1,0,99] for [102,2,1,0,99]" do
+      expect(NewIntcode.new.execute(1,[102,2,1,0,99])[0]).to eq([4,2,1,0,99])
+    end
+    it "returns [2,1,1,0,99] for [1101,1,1,0,99]" do
+      expect(NewIntcode.new.execute(1,[1101,1,1,0,99])[0]).to eq([2,1,1,0,99])
+    end
+    it "returns [2,2,1,0,99] for [1102,2,1,0,99]" do
+      expect(NewIntcode.new.execute(1,[1102,2,1,0,99])[0]).to eq([2,2,1,0,99])
+    end
+    it "returns [4,1,1,0,99] for [1001,2,2,0,99]" do
+      expect(NewIntcode.new.execute(1,[1001,2,2,0,99])[0]).to eq([4,2,2,0,99])
+    end
+    it "returns [1001,2,1,1,99] for [1001,3,1,1,99]" do
+      expect(NewIntcode.new.execute(1,[1001,3,1,1,99])[0]).to eq([1001,2,1,1,99])
+    end
+    it "returns [1001,0,-1,1,99] for [1001,3,-1,1,99]" do
+      expect(NewIntcode.new.execute(1,[1001,3,-1,1,99])[0]).to eq([1001,0,-1,1,99])
+    end
   end
 end
