@@ -98,4 +98,32 @@ describe NewIntcode do
       expect(NewIntcode.new.execute(1,[1001,3,-1,1,99])[0]).to eq([1001,0,-1,1,99])
     end
   end
+  context "for 5 and 6 instruction opcodes" do
+    it "returns [3,1,5,1,13,1,1,1,12,4,12,99,1,9],[1] for 1,[3,1,5,1,13,1,1,1,12,4,12,99,1,9]" do
+      expect(NewIntcode.new.execute(1,[3,1,5,1,13,1,1,1,12,4,12,99,1,9])).to eq([[3,1,5,1,13,1,1,1,12,4,12,99,1,9],[1]])
+    end
+    it "returns [3,0,5,1,13,1,1,1,12,4,12,99,0,9],[0] for 0,[3,1,5,1,13,1,1,1,12,4,12,99,0,9]" do
+      expect(NewIntcode.new.execute(0,[3,1,5,1,13,1,1,1,12,4,12,99,0,9])).to eq([[3,0,5,1,13,1,1,1,12,4,12,99,0,9],[0]])
+    end
+    it "returns [3,1,6,1,13,1,1,1,12,4,12,99,2,9],[2] for 1,[3,1,6,1,13,1,1,1,12,4,12,99,0,9]" do
+      expect(NewIntcode.new.execute(1,[3,1,6,1,13,1,1,1,12,4,12,99,0,9])).to eq([[3,1,6,1,13,1,1,1,12,4,12,99,2,9],[2]])
+    end
+    it "returns [3,0,6,1,13,1,1,1,12,4,12,99,0,9],[0] for 0,[3,1,6,1,13,1,1,1,12,4,12,99,0,9]" do
+      expect(NewIntcode.new.execute(0,[3,1,6,1,13,1,1,1,12,4,12,99,0,9])).to eq([[3,0,6,1,13,1,1,1,12,4,12,99,0,9],[0]])
+    end
+  end
+  context "for 7 and 8 instruction opcodes" do
+    it "returns [7,1,2,5,99,1] for [7,1,2,5,99,0]" do
+      expect(NewIntcode.new.execute(0,[7,1,2,5,99,0])[0]).to eq([7,1,2,5,99,1])
+    end
+    it "returns [7,1,1,5,99,0] for [7,1,1,5,99,9]" do
+      expect(NewIntcode.new.execute(0,[7,1,1,5,99,9])[0]).to eq([7,1,1,5,99,0])
+    end
+    it "returns [8,1,1,5,99,1] for [8,1,1,5,99,0]" do
+      expect(NewIntcode.new.execute(0,[8,1,1,5,99,0])[0]).to eq([8,1,1,5,99,1])
+    end
+    it "returns [8,1,2,5,99,0] for [8,1,2,5,99,9]" do
+      expect(NewIntcode.new.execute(0,[8,1,2,5,99,9])[0]).to eq([8,1,2,5,99,0])
+    end
+  end
 end
