@@ -27,7 +27,7 @@ class NewIntcode
         input[input[i + 3]] = first_parameter * second_parameter
       end
       input[input[i + 1]] = integer_input if instruction == 3
-      output.push(input[input[i + 1]]) if instruction == 4
+      output.push(first_parameter) if instruction == 4
       if instruction == 5
         if first_parameter != 0
           i = second_parameter
@@ -49,7 +49,7 @@ class NewIntcode
         end
       end
       if instruction == 8
-        if first_parameter ==second_parameter
+        if first_parameter == second_parameter
           input[input[i + 3]] = 1
         else input[input[i + 3]] = 0
         end
