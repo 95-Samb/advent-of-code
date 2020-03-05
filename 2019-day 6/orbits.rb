@@ -7,7 +7,9 @@ class Orbits
     answer
   end
   def orbit_logic(input)
-    oribters = all_orbiters(input)
+    all_orbiters = all_orbiters(input)
+    orbiters = all_orbiters[0]
+    centre_point = all_orbiters[1]
 
     answer = [input[0][0],input[0][2]]
     answer.push(input[1][2]) if input[1] && input[1][0] != input[0][0]
@@ -16,21 +18,15 @@ class Orbits
   end
   def all_orbiters(input)
     i = 0
-    answer = []
+    orbited = []
+    orbiting = []
     while i < input.length
-      answer.push(input[i][0]).push(input[i][2])
+      orbiters = input[i].split(")")
+      orbited.push(orbiters[0])
+      orbiting.push(orbiters[1])
       i += 1
     end
-    answer.uniq
-  end
-  def centre_point(input)
-    i = 0
-    orbit_something = []
-    orbiters = all_orbiters(input)
-    while i < input.length
-      orbit_something.push(input[i][2])
-      i += 1
-    end
-    (orbiters - orbit_something).join
+    all_orbiters = orbited + orbiting
+    [all_orbiters.uniq,(all_orbiters - orbiting).uniq.join]
   end
 end
