@@ -68,4 +68,22 @@ describe Orbits do
       expect(Orbits.new.all_orbiters(["AC)BC"])[1]).to eq("AC")
     end
   end
+  context "for the orbiting_of_point method" do
+    it "returns B for A)B and A " do
+      expect(Orbits.new.orbiting_of_point("A",["A)B"])).
+      to contain_exactly("B")
+    end
+    it "returns B,C for A)B,A)C and A " do
+      expect(Orbits.new.orbiting_of_point("A",["A)B","A)C"])).
+      to contain_exactly("B","C")
+    end
+    it "returns B for A)B,B)C and A " do
+      expect(Orbits.new.orbiting_of_point("A",["A)B","B)C"])).
+      to contain_exactly("B")
+    end
+    it "returns for AC)BC,BC)CC and A " do
+      expect(Orbits.new.orbiting_of_point("A",["AC)BC","BC)CC"])).
+      to contain_exactly()
+    end
+  end
 end
