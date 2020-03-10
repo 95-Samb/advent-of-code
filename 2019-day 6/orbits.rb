@@ -6,16 +6,15 @@ class Orbits
     answer += 1 if input[1] && input[1][0] == "B"
     answer
   end
-  def orbit_logic(input)
-    all_orbiters = all_orbiters(input)
-    orbiters = all_orbiters[0]
-    centre_point = all_orbiters[1]
-    orbits = [centre_point]
-
-    answer = [input[0][0],input[0][2]]
-    answer.push(input[1][2]) if input[1] && input[1][0] != input[0][0]
-    answer[1] += input[1][2] if input[1][0] == input[0][0]
-    answer
+  def orbit_logic(centre_point,input)
+    output = [centre_point]
+    orbitted = [centre_point]
+    output += [orbiting_of_point(centre_point,input)]
+    new_orbit_centres = output[-1][0].dup
+    unless orbiting_of_point(new_orbit_centres,input).empty?
+      output += [orbiting_of_point(new_orbit_centres,input)]
+    end
+    output
   end
   def all_orbiters(input)
     i = 0

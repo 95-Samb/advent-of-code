@@ -1,7 +1,7 @@
 require_relative "../orbits"
 
 describe Orbits do
-  context "for the execute method" do
+  xcontext "for the execute method" do
     it "returns 1 for A)B" do
       expect(Orbits.new.execute(["A)B"])).to eq(1)
     end
@@ -11,22 +11,22 @@ describe Orbits do
     it "returns 3 for A)B,B)C" do
       expect(Orbits.new.execute(["A)B","B)C"])).to eq(3)
     end
-    xit "returns 3 for B)C,A)B" do
+    it "returns 3 for B)C,A)B" do
       expect(Orbits.new.execute(["B)C","A)B"])).to eq(3)
     end
   end
-  xcontext "for the orbit_logic method" do
-    it "returns [A,B] for A)B" do
-      expect(Orbits.new.orbit_logic(["A)B"])).to eq(["A","B"])
+  context "for the orbit_logic method" do
+    it "returns [A,B] for A and A)B" do
+      expect(Orbits.new.orbit_logic("A",["A)B"])).to eq(["A",["B"]])
     end
-    it "returns [A,B,C] for A)B,B)C" do
-      expect(Orbits.new.orbit_logic(["A)B","A)C"])).to eq(["A","B","C"])
+    it "returns [A,B,C] for A and A)B,B)C" do
+      expect(Orbits.new.orbit_logic("A",["A)B","B)C"])).to eq(["A",["B"],["C"]])
     end
     it "returns [A,B,D] for A)B,B)D" do
-      expect(Orbits.new.orbit_logic(["A)B","A)D"])).to eq(["A","B","D"])
+      expect(Orbits.new.orbit_logic("A",["A)B","A)D"])).to eq(["A",["B","D"]])
     end
-    it "returns [A,BC] for A)B,A)C" do
-      expect(Orbits.new.orbit_logic(["A)B","A)C"])).to eq(["A","BC"])
+    it "returns [A,BC] for A and A)B,A)C" do
+      expect(Orbits.new.orbit_logic("A",["A)B","A)C"])).to eq(["A",["B","C"]])
     end
   end
   context "for the all_orbiters method " do
@@ -84,6 +84,10 @@ describe Orbits do
     it "returns for AC)BC,BC)CC and A " do
       expect(Orbits.new.orbiting_of_point("A",["AC)BC","BC)CC"])).
       to contain_exactly()
+    end
+    it "returns AAA,BBB,CCC for COM)AAA,COM)BBB,COM)CCC and COM " do
+      expect(Orbits.new.orbiting_of_point("COM",["COM)AAA","COM)BBB","COM)CCC"])).
+      to contain_exactly("AAA","BBB","CCC")
     end
   end
 end
