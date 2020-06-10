@@ -14,7 +14,7 @@ describe Orbits do
     it "returns 3 for B)C,A)B" do
       expect(Orbits.new.execute(["B)C","A)B"])).to eq(3)
     end
-    xit "returns 3 for B)C,A)B,A)BB,A)BBB,B)CC" do
+    it "returns 3 for B)C,A)B,A)BB,A)BBB,B)CC" do
       expect(Orbits.new.execute(["B)C","A)B","A)BB","A)BBB","B)CC"])).to eq(7)
     end
   end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class InputConverter
-  def convert(input)
+  def self.convert(input)
     input.split("\n")
   end
 end
