@@ -28,6 +28,9 @@ describe Orbits do
     it "returns [A,BC] for A and A)B,A)C" do
       expect(Orbits.new.orbit_logic("A",["A)B","A)C"])).to eq(["A",["B","C"]])
     end
+    it "returns [A,BC,D] for A and A)B,A)C,C)D" do
+      expect(Orbits.new.orbit_logic("A",["A)B","A)C","C)D"])).to eq(["A",["B","C"],["D"]])
+    end
   end
   context "for the all_orbiters method " do
     it "returns [A,B] for A)B" do

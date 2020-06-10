@@ -8,13 +8,21 @@ class Orbits
   end
   def orbit_logic(centre_point,input)
     output = [centre_point]
-    orbitted = [centre_point]
     output += [orbiting_of_point(centre_point,input)]
-    new_orbit_centres = output[-1][0].dup
-    unless orbiting_of_point(new_orbit_centres,input).empty?
-      output += [orbiting_of_point(new_orbit_centres,input)]
+    i = 0
+    until i == output[-1].length || output[-1].empty?
+      new_orbits = []
+      new_orbit_centres = output[-1][i].dup
+      unless orbiting_of_point(new_orbit_centres,input).empty?
+        new_orbits += orbiting_of_point(new_orbit_centres,input)
+      end
+      i += 1
+      if i == output[-1].length
+        output.push(new_orbits)
+        i = 0
+      end
     end
-    output
+    output[0..-2]
   end
   def all_orbiters(input)
     i = 0
