@@ -1,7 +1,7 @@
 require_relative "../orbits"
 
 describe Orbits do
-  xcontext "for the execute method" do
+  context "for the execute method" do
     it "returns 1 for A)B" do
       expect(Orbits.new.execute(["A)B"])).to eq(1)
     end
@@ -13,6 +13,9 @@ describe Orbits do
     end
     it "returns 3 for B)C,A)B" do
       expect(Orbits.new.execute(["B)C","A)B"])).to eq(3)
+    end
+    xit "returns 3 for B)C,A)B,A)BB,A)BBB,B)CC" do
+      expect(Orbits.new.execute(["B)C","A)B","A)BB","A)BBB","B)CC"])).to eq(7)
     end
   end
   context "for the orbit_logic method" do

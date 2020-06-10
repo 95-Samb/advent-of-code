@@ -1,10 +1,16 @@
 
 class Orbits
   def execute(input)
-    orbits = {}
-    answer = input.length
-    answer += 1 if input[1] && input[1][0] == "B"
-    answer
+    centre_point = all_orbiters(input)[1]
+    orbits = orbit_logic(centre_point,input)
+    i = 1
+    total_orbits = 0
+    until i == orbits.length
+      total_orbit_length = orbits[i].length * i
+      total_orbits += total_orbit_length
+      i += 1
+    end
+    total_orbits
   end
   def orbit_logic(centre_point,input)
     output = [centre_point]
