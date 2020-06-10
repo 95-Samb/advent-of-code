@@ -16,16 +16,18 @@ class Orbits
     output = [centre_point]
     output += [orbiting_of_point(centre_point,input)]
     i = 0
-    until i == output[-1].length || output[-1].empty?
-      new_orbits = []
-      new_orbit_centres = output[-1][i].dup
-      unless orbiting_of_point(new_orbit_centres,input).empty?
-        new_orbits += orbiting_of_point(new_orbit_centres,input)
-      end
+    new_orbits = []
+    until output[-1].empty?
+
+      new_orbit_centre = output[-1][i]
+      # unless orbiting_of_point(new_orbit_centre,input).empty?
+        new_orbits += orbiting_of_point(new_orbit_centre,input)
+      # end
       i += 1
       if i == output[-1].length
         output.push(new_orbits)
         i = 0
+        new_orbits = []
       end
     end
     output[0..-2]

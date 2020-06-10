@@ -34,6 +34,15 @@ describe Orbits do
     it "returns [A,BC,D] for A and A)B,A)C,C)D" do
       expect(Orbits.new.orbit_logic("A",["A)B","A)C","C)D"])).to eq(["A",["B","C"],["D"]])
     end
+    it "returns [A,BC,D] for A and A)B,A)C,C)D" do
+      expect(Orbits.new.orbit_logic("A",["A)C","A)B","C)D"])).to eq(["A",["C","B"],["D"]])
+    end
+    it "returns [A,[B,BB,BBB],[C,CC]] for A and B)C,A)B,A)BB,A)BBB,B)CC" do
+      expect(Orbits.new.orbit_logic("A",["B)C","A)B","A)BB","A)BBB","B)CC"])).to eq(["A",["B","BB","BBB"],["C","CC"]])
+    end
+    it "returns [A,BCD,E] for A and A)B,A)C,A)D,D)E" do
+      expect(Orbits.new.orbit_logic("A",["A)C","A)B","A)D","D)E"])).to eq(["A",["C","B","D"],["E"]])
+    end
   end
   context "for the all_orbiters method " do
     it "returns [A,B] for A)B" do
@@ -94,6 +103,10 @@ describe Orbits do
     it "returns AAA,BBB,CCC for COM)AAA,COM)BBB,COM)CCC and COM " do
       expect(Orbits.new.orbiting_of_point("COM",["COM)AAA","COM)BBB","COM)CCC"])).
       to contain_exactly("AAA","BBB","CCC")
+    end
+    it "returns for B)C,B)CC and B " do
+      expect(Orbits.new.orbiting_of_point("B",["B)C","B)CC"])).
+      to contain_exactly("C","CC")
     end
   end
 end
