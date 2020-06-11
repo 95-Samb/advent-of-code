@@ -18,11 +18,8 @@ class Orbits
     i = 0
     new_orbits = []
     until output[-1].empty?
-
       new_orbit_centre = output[-1][i]
-      # unless orbiting_of_point(new_orbit_centre,input).empty?
-        new_orbits += orbiting_of_point(new_orbit_centre,input)
-      # end
+      new_orbits += orbiting_of_point(new_orbit_centre,input)
       i += 1
       if i == output[-1].length
         output.push(new_orbits)
@@ -55,5 +52,10 @@ class Orbits
       i += 1
     end
     orbiting_points
+  end
+  def self.point_of_orbit(point,input)
+    orbits = input.map { |e| e.split(")")  }
+    orbiting = orbits.select { |e| e[1] == point  }
+    orbiting.flatten[0]
   end
 end

@@ -109,4 +109,22 @@ describe Orbits do
       to contain_exactly("C","CC")
     end
   end
+  context "for the point of orbit method"do
+    it "returns A for B and A)B" do
+      expect(Orbits.point_of_orbit("B",["A)B"])).
+      to eq("A")
+    end
+    it "returns B for C and B)C" do
+      expect(Orbits.point_of_orbit("C",["B)C"])).
+      to eq("B")
+    end
+    it "returns blank for C and B)A" do
+      expect(Orbits.point_of_orbit("C",["B)A"])).
+      to eq(nil)
+    end
+    it "returns A for B and A)C,A)B" do
+      expect(Orbits.point_of_orbit("B",["A)C","A)B"])).
+      to eq("A")
+    end
+  end
 end
