@@ -44,43 +44,19 @@ describe Orbits do
       expect(Orbits.new.orbit_logic("A",["A)C","A)B","A)D","D)E"])).to eq(["A",["C","B","D"],["E"]])
     end
   end
-  context "for the all_orbiters method " do
-    it "returns [A,B] for A)B" do
-      expect(Orbits.new.all_orbiters(["A)B"])[0]).to eq(["A","B"])
-    end
-    it "returns [A,B,C] for A)B,B)C" do
-      expect(Orbits.new.all_orbiters(["A)B","B)C"])[0]).to eq(["A","B","C"])
-    end
-    it "returns [A,B,C] for A)B,A)C" do
-      expect(Orbits.new.all_orbiters(["A)B","A)C"])[0]).to eq(["A","B","C"])
-    end
-    it "returns [A,B,C,D] for A)B,A)C,B)D" do
-      expect(Orbits.new.all_orbiters(["A)B","A)C","B)D"])[0]).to eq(["A","B","C","D"])
-    end
-    it "returns [A,B,C,D,E] for A)B,A)C,B)D,A)E" do
-      expect(Orbits.new.all_orbiters(["A)B","A)C","B)D","A)E"])[0]).to eq(["A","B","C","D","E"])
-    end
-    it "returns [AB,BC] for AB)BC" do
-      expect(Orbits.new.all_orbiters(["AB)BC"])[0]).to contain_exactly("AB","BC")
-    end
-    it "returns [AB,AC,AE,BC,BD,CB,DE,EC] for AB)BC,AC)CB,BD)DE,AE)EC" do
-      expect(Orbits.new.all_orbiters(["AB)BC","AC)CB","BD)DE","AE)EC"])[0]).
-      to contain_exactly("AB","AC","AE","BC","BD","CB","DE","EC")
-    end
 
-  end
-  context "for the centre point part of all_orbiters method" do
+  context "for the centre point method" do
     it "returns A for A)B" do
-      expect(Orbits.new.all_orbiters(["A)B"])[1]).to eq("A")
+      expect(Orbits.new.centre_point(["A)B"])).to eq("A")
     end
     it "returns B for B)A,B)C" do
-      expect(Orbits.new.all_orbiters(["B)A","B)C"])[1]).to eq("B")
+      expect(Orbits.new.centre_point(["B)A","B)C"])).to eq("B")
     end
     it "returns A for B)C,A)B" do
-      expect(Orbits.new.all_orbiters(["B)C","A)B"])[1]).to eq("A")
+      expect(Orbits.new.centre_point(["B)C","A)B"])).to eq("A")
     end
     it "returns AC for AC)BC" do
-      expect(Orbits.new.all_orbiters(["AC)BC"])[1]).to eq("AC")
+      expect(Orbits.new.centre_point(["AC)BC"])).to eq("AC")
     end
   end
   context "for the orbiting_of_point method" do
@@ -111,20 +87,50 @@ describe Orbits do
   end
   context "for the point of orbit method"do
     it "returns A for B and A)B" do
-      expect(Orbits.point_of_orbit("B",["A)B"])).
+      expect(Orbits.new.point_of_orbit("B",["A)B"])).
       to eq("A")
     end
     it "returns B for C and B)C" do
-      expect(Orbits.point_of_orbit("C",["B)C"])).
+      expect(Orbits.new.point_of_orbit("C",["B)C"])).
       to eq("B")
     end
     it "returns blank for C and B)A" do
-      expect(Orbits.point_of_orbit("C",["B)A"])).
+      expect(Orbits.new.point_of_orbit("C",["B)A"])).
       to eq(nil)
     end
     it "returns A for B and A)C,A)B" do
-      expect(Orbits.point_of_orbit("B",["A)C","A)B"])).
+      expect(Orbits.new.point_of_orbit("B",["A)C","A)B"])).
       to eq("A")
+    end
+    it "returns A for B and A)C,B)D,C)E,A)B" do
+      expect(Orbits.new.point_of_orbit("B",["A)C","B)D","C)E","A)B"])).
+      to eq("A")
+    end
+    it "returns B for C and B)C,B)D,C)E,A)B" do
+      expect(Orbits.new.point_of_orbit("C",["B)C","B)D","C)E","A)B"])).
+      to eq("B")
+    end
+    it "returns BB for CCC and BB)CCC,BB)CC,CC)E,A)BB" do
+      expect(Orbits.new.point_of_orbit("CCC",["BB)CCC","BB)CC","CC)E","A)BB"])).
+      to eq("BB")
+    end
+  end
+  context "for the single orbit logic method" do
+    it "returns B,A for C and B)C,A)B" do
+      expect(Orbits.new.single_orbit_logic("C",["B)C","A)B"])).
+      to eq(["B","A"])
+    end
+    it "returns B,C for A and B)A,C)B" do
+      expect(Orbits.new.single_orbit_logic("A",["B)A","C)B"])).
+      to eq(["B","C"])
+    end
+    it "returns B,C for A and B)A,C)B,B)D" do
+      expect(Orbits.new.single_orbit_logic("A",["B)A","C)B","B)D"])).
+      to eq(["B","C"])
+    end
+    it "returns B,C,D for A and B)A,C)B,D)C" do
+      expect(Orbits.new.single_orbit_logic("A",["B)A","C)B","D)C"])).
+      to eq(["B","C","D"])
     end
   end
 end

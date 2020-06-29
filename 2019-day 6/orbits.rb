@@ -1,7 +1,7 @@
 
 class Orbits
   def execute(input)
-    centre_point = all_orbiters(input)[1]
+    centre_point = centre_point(input)
     orbits = orbit_logic(centre_point,input)
     i = 1
     total_orbits = 0
@@ -29,7 +29,7 @@ class Orbits
     end
     output[0..-2]
   end
-  def all_orbiters(input)
+  def centre_point(input)
     i = 0
     orbited = []
     orbiting = []
@@ -41,7 +41,7 @@ class Orbits
     end
     all_orbiters = orbited + orbiting
     centre_point = (all_orbiters - orbiting).uniq.join
-    [all_orbiters.uniq,centre_point]
+    centre_point
   end
   def orbiting_of_point(point,input)
     orbiting_points = []
@@ -53,9 +53,19 @@ class Orbits
     end
     orbiting_points
   end
-  def self.point_of_orbit(point,input)
+  def point_of_orbit(point,input)
     orbits = input.map { |e| e.split(")")  }
     orbiting = orbits.select { |e| e[1] == point  }
     orbiting.flatten[0]
+  end
+  def single_orbit_logic(point,input)
+    orbit_path = []
+    orbitting_point = point
+    until orbitting_point == nil
+      new_orbit = point_of_orbit(orbitting_point,input)
+      orbit_path.push(new_orbit)
+      orbitting_point = new_orbit
+    end
+    orbit_path[0..-2]
   end
 end
