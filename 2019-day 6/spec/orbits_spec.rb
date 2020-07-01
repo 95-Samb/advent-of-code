@@ -133,4 +133,15 @@ describe Orbits do
       to eq(["B","C","D"])
     end
   end
+  context "for the orbit transfers method" do
+    it "returns 0 for A,B,[C)A,C)B]" do
+      expect(Orbits.new.orbit_transfers("A","B",["C)A","C)B"])).to eq(0)
+    end
+    it "returns 1 for A,B,[C)A,D)B,C)D]" do
+      expect(Orbits.new.orbit_transfers("A","B",["C)A","D)B","C)D"])).to eq(1)
+    end
+    it "returns 1 for A,E,[C)A,D)E,C)D]" do
+      expect(Orbits.new.orbit_transfers("A","E",["C)A","D)E","C)D"])).to eq(1)
+    end
+  end
 end

@@ -68,4 +68,11 @@ class Orbits
     end
     orbit_path[0..-2]
   end
+  def orbit_transfers(first_point,second_point,input)
+    first_point_orbit_path = single_orbit_logic(first_point,input)
+    second_point_orbit_path = single_orbit_logic(second_point,input)
+    intersects = first_point_orbit_path & second_point_orbit_path
+    orbit_transfers = first_point_orbit_path.index(intersects[0]) +
+    second_point_orbit_path.index(intersects[0])
+  end
 end
