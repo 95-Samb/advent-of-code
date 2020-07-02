@@ -143,5 +143,11 @@ describe Orbits do
     it "returns 1 for A,E,[C)A,D)E,C)D]" do
       expect(Orbits.new.orbit_transfers("A","E",["C)A","D)E","C)D"])).to eq(1)
     end
+    it "returns 2 for A,E,[F)A,D)E,C)D,C)F]" do
+      expect(Orbits.new.orbit_transfers("A","E",["F)A","D)E","C)D","C)F"])).to eq(2)
+    end
+    it "returns 3 for YOU,SAN,[F)YOU,D)SAN,C)D,G)F,C)G]" do
+      expect(Orbits.new.orbit_transfers("YOU","SAN",["F)YOU","D)SAN","C)D","G)F","C)G"])).to eq(3)
+    end
   end
 end
