@@ -2,6 +2,7 @@ class NewIntcode
   def execute(integer_input,input)
     output = []
     i = 0
+    integer_input_tracker = 0
     while input[i] != 99
       instruction = input[i].digits[0]
       first_parameter_state = input[i].digits[2]
@@ -26,7 +27,10 @@ class NewIntcode
       elsif instruction == 2
         input[input[i + 3]] = first_parameter * second_parameter
       end
-      input[input[i + 1]] = integer_input if instruction == 3
+      if instruction == 3
+        input[input[i + 1]] = integer_input[integer_input_tracker]
+        integer_input_tracker += 1
+      end
       output.push(first_parameter) if instruction == 4
       if instruction == 5
         if first_parameter != 0
