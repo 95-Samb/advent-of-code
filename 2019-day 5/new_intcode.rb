@@ -7,12 +7,6 @@ class NewIntcode
       instruction = input[i].digits[0]
       first_parameter_state = input[i].digits[2]
       second_parameter_state = input[i].digits[3]
-      cycle = if instruction == 1 || instruction == 2 ||
-              instruction == 7 || instruction == 8
-                4
-              elsif instruction == 3 || instruction == 4
-                2
-              end
       if first_parameter_state == 1
         first_parameter = input[i + 1]
       else first_parameter = input[input[i + 1]]
@@ -22,41 +16,36 @@ class NewIntcode
       else second_parameter = input[input[i + 2]]
       end
 
-      if instruction == 1
+      cycle = [1,2,7,8].include?(instruction) ? 4 : 2
+
+      case instruction
+      when 1
         input[input[i + 3]] = first_parameter + second_parameter
-      elsif instruction == 2
+      when 2
         input[input[i + 3]] = first_parameter * second_parameter
-      end
-      if instruction == 3
+      when 3
         input[input[i + 1]] = integer_input[integer_input_tracker]
         integer_input_tracker += 1
-      end
-      output.push(first_parameter) if instruction == 4
-      if instruction == 5
+      when 4
+        output.push(first_parameter)
+      when 5
         if first_parameter != 0
           i = second_parameter
           cycle = 0
         else cycle = 3
         end
-      end
-      if instruction == 6
+      when 6
         if first_parameter == 0
           i = second_parameter
           cycle = 0
         else cycle = 3
         end
-      end
-      if instruction == 7
-        if first_parameter < second_parameter
-          input[input[i + 3]] = 1
-        else input[input[i + 3]] = 0
-        end
-      end
-      if instruction == 8
-        if first_parameter == second_parameter
-          input[input[i + 3]] = 1
-        else input[input[i + 3]] = 0
-        end
+      when 7
+        first_parameter < second_parameter ?
+          input[input[i + 3]] = 1 : input[input[i + 3]] = 0
+      when 8
+        first_parameter == second_parameter ?
+          input[input[i + 3]] = 1 : input[input[i + 3]] = 0
       end
       i += cycle
     end
