@@ -1,18 +1,23 @@
 require_relative "../2019-day 5/new_intcode"
 
 class AmplifierSignal
-  def execute(integer_input,phase_settings,input)
+  def execute(phase_settings,integer_input,input)
     all_phase_combos = phase_settings.permutation.to_a
-    outputs = []
-    all_phase_combos.each { |e|
-      i = 0
-      amplifier_input = integer_input
-      until i == e.length
-        new_input = NewIntcode.new.execute([amplifier_input.dup,e[i]],input.dup)[1]
-        amplifier_input = new_input
-        i += 1
-      end
-      outputs.push(amplifier_input) }
-    outputs.max
+    signals = []
+    all_phase_combos.each { |e| signals.push(phase_setting_output(e,integer_input,input))  }
+    signals.max
   end
+
+  def phase_setting_output(phase_setting,integer_input,input)
+    i = 0
+    while i < phase_setting.length
+      output = NewIntcode.new.execute([phase_setting[i],integer_input],input.dup)[1][0]
+      integer_input = output
+      i += 1
+    end
+    output
+  rescue
+    0
+  end
+
 end

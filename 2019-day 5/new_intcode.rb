@@ -1,9 +1,12 @@
+
+
 class NewIntcode
   def execute(integer_input,input)
     output = []
     i = 0
     integer_input_tracker = 0
     while input[i] != 99
+
       instruction = input[i].digits[0]
       first_parameter_state = input[i].digits[2]
       second_parameter_state = input[i].digits[3]
