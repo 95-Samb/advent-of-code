@@ -1,7 +1,8 @@
 require_relative "../2019-day 5/new_intcode"
 
 class AmplifierSignal
-  def execute(phase_settings,integer_input,input)
+
+  def looped_max_signal(phase_settings,integer_input,input)
     all_phase_combos = phase_settings.permutation.to_a
     signals = []
     all_phase_combos.each { |e| signals.push(phase_setting_output(e,integer_input,input))  }
@@ -19,5 +20,9 @@ class AmplifierSignal
   rescue
     0
   end
+
+  def looped_signal_output(phase_setting,integer_input,input)
+  end
+
 
 end
