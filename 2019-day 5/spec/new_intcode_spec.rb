@@ -204,12 +204,5 @@ describe NewIntcode do
       expect(NewIntcode.new([1,1],[3,0,3,6,99,0,0]).execute()[0]).to eq([1,0,3,6,99,0,1])
     end
   end
-  context "for new integer input method" do
-    it "returns [1,1] for 1,0 and 1" do
-      expect(NewIntcode.new([1],nil).new_integer_input(1)).to eq([1,1])
-    end
-    it "returns [1,2,3,4,5,1] for [1,2,3,4,5],0 and 1" do
-      expect(NewIntcode.new([1,2,3,4,5],nil).new_integer_input(1)).to eq([1,2,3,4,5,1])
-    end
-  end
+
 end

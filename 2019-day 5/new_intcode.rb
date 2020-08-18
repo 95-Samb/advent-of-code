@@ -1,6 +1,6 @@
-
-
 class NewIntcode
+  STOP_CODE = 99
+
   def initialize(integer_input,input)
     @integer_input = integer_input
     @input = input
@@ -9,19 +9,18 @@ class NewIntcode
   def execute()
     i = 0
     integer_input_tracker = 0
-    while @input[i] != 99
 
+    until @input[i] == STOP_CODE
       instruction = @input[i].digits[0]
-      first_parameter_state = @input[i].digits[2]
-      second_parameter_state = @input[i].digits[3]
-      if first_parameter_state == 1
-        first_parameter = @input[i + 1]
-      else first_parameter = @input[@input[i + 1]]
-      end
-      if second_parameter_state == 1
-        second_parameter = @input[i + 2]
-      else second_parameter = @input[@input[i + 2]]
-      end
+
+      first_parameter_mode = parameter_mode(@input[i].digits[2])
+      second_parameter_mode = parameter_mode(@input[i].digits[3])
+
+      first_parameter = @input[i + 1] if first_parameter_mode == "immediate"
+      first_parameter = @input[@input[i + 1]] if first_parameter_mode == "position"
+
+      second_parameter = @input[i + 2] if second_parameter_mode == "immediate"
+      second_parameter = @input[@input[i + 2]] if second_parameter_mode == "position"
 
       cycle = [1,2,7,8].include?(instruction) ? 4 : 2
 
@@ -31,8 +30,8 @@ class NewIntcode
       when 2
         @input[@input[i + 3]] = first_parameter * second_parameter
       when 3
-        @input[@input[i + 1]] = @integer_input[integer_input_tracker]
-        integer_input_tracker += 1
+          @input[@input[i + 1]] = @integer_input[integer_input_tracker]
+          integer_input_tracker += 1
       when 4
         @output.push(first_parameter)
       when 5
@@ -58,7 +57,9 @@ class NewIntcode
     end
     [@input,@output]
   end
-  def new_integer_input(input)
-    @integer_input.push(input)
+  def parameter_mode(input)
+    return "position" if input == 0 || input == nil
+    return "immediate" if input == 1
   end
+
 end
