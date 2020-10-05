@@ -14,5 +14,9 @@ describe IntcodeInstructions do
     it "returns [8,1,0,5,99,0] for 8,0,[8,1,0,5,99,0],[1,8]" do
       expect(IntcodeInstructions.new.execute(8,0,[8,1,0,5,99,0],[1,8])).to eq(:intcode => [8,1,0,5,99,0],:pointer => 4)
     end
+    it "returns [4,2,1,0,99] for 2,0 [102,2,1,0,99]" do
+      expect(IntcodeInstructions.new.execute(2,0,[102,2,1,0,99],[2,2])).to eq(:intcode => [4,2,1,0,99],:pointer => 4)
+      #expect(InstructionParameters.new.identify(102.digits,0,[102,2,1,0,99])).to eq([2,2])
+    end
   end
 end

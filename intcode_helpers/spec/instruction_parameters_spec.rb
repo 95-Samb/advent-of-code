@@ -30,6 +30,9 @@ describe InstructionParameters  do
     it "returns [1,1] for 1002,0 and [1002,2,1,0,99]" do
       expect(InstructionParameters.new.identify(1002.digits,0,[1002,2,1,0,99])).to eq([1,1])
     end
+    it "returns [2,2] for 102,0 and [102,2,1,0,99]" do
+      expect(InstructionParameters.new.identify(102.digits,0,[102,2,1,0,99])).to eq([2,2])
+    end
   end
 
 end
