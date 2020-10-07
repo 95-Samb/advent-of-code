@@ -25,6 +25,9 @@ describe ImageRenderer do
     it "returns 0 for [2],[2],[2],[2],[0]" do
       expect(ImageRenderer.new.decode([["2"],["2"],["2"],["2"],["0"]])).to eq(["0"])
     end
+    it "returns 01,10 for [02,22],[11,22],[22,12],[00,00]" do
+      expect(ImageRenderer.new.decode([["02","22"],["11","22"],["22","12"],["00","00"]])).to eq(["01","10"])
+    end
   end
   context "for layer combiner" do
     it "returns 0 for 0 and 0" do
