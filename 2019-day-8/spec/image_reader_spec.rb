@@ -47,4 +47,21 @@ describe ImageReader do
       end
     end
   end
+  context "for multiple layers" do
+    context "for layers method with width 1 and height 1" do
+      it "returns [1],[2],[3] for 123" do
+        expect(ImageReader.new(1,1).layers("123")).to eq([["1"],["2"],["3"]])
+      end
+      it "returns [9],[8],[7],[6],[5],[4],[3],[2],[1] for 987654321" do
+        expect(ImageReader.new(1,1).layers("987654321")).to eq(
+          [["9"],["8"],["7"],["6"],["5"],["4"],["3"],["2"],["1"]])
+      end
+    end
+    context "for layers method with width 3 and height 2" do
+      it "returns [123,321],[456,654],[789,987] for 123321456654789987" do
+        expect(ImageReader.new(3,2).layers("123321456654789987")).to eq(
+          [["123","321"],["456","654"],["789","987"]])
+      end
+    end
+  end
 end
