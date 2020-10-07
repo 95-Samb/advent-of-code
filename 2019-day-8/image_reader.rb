@@ -15,4 +15,7 @@ class ImageReader
     required_index = digit_counts.index(layer_with_fewest_digit)
     layers[required_index]
   end
+  def layer_digit_count_multiplier(first_input,second_input,layer)
+    layer.join.count(first_input) * layer.join.count(second_input)
+  end
 end

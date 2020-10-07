@@ -74,5 +74,35 @@ describe ImageReader do
     it "returns 222 for 1 and 111,222" do
       expect(ImageReader.new(3,1).fewest_digit("1",[["111"],["222"]])). to eq(["222"])
     end
+    it "returns for 121 for 2 and 121,222,223,272" do
+      expect(ImageReader.new(3,1).fewest_digit("2",[["121"],["222"],["223"],["272"]])). to eq(["121"])
+    end
+    it "returns for 1,2,1 for 2 and [1,2,1],[2,2,2],[2,2,3],[2,7,2]" do
+      expect(ImageReader.new(3,1).fewest_digit("2",[["1","2","1"],["2","2","2"],
+                                                    ["2","2","3"],["2","7","2"]])). to eq(["1","2","1"])
+    end
+  end
+  context "for layer digit count multiplier method" do
+    it "returns 2 for 122 and 1,2 " do
+      expect(ImageReader.new(1,1).layer_digit_count_multiplier("1","2",["122"])).to eq(2)
+    end
+    it "returns 3 for 1222 and 1,2 " do
+      expect(ImageReader.new(1,1).layer_digit_count_multiplier("1","2",["1222"])).to eq(3)
+    end
+    it "returns 2 for [1,2,2] and 1,2 " do
+      expect(ImageReader.new(1,1).layer_digit_count_multiplier("1","2",["1","2","2"])).to eq(2)
+    end
+    it "returns 2 for 1223334444 and 1,2 " do
+      expect(ImageReader.new(1,1).layer_digit_count_multiplier("1","2",["1223334444"])).to eq(2)
+    end
+    it "returns 3 for 1223334444 and 1,3 " do
+      expect(ImageReader.new(1,1).layer_digit_count_multiplier("1","3",["1223334444"])).to eq(3)
+    end
+    it "returns 6 for 1223334444 and 2,3 " do
+      expect(ImageReader.new(1,1).layer_digit_count_multiplier("2","3",["1223334444"])).to eq(6)
+    end
+    it "returns 12 for 1223334444 and 4,3 " do
+      expect(ImageReader.new(1,1).layer_digit_count_multiplier("4","3",["1223334444"])).to eq(12)
+    end
   end
 end
