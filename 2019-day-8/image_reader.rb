@@ -9,4 +9,10 @@ class ImageReader
     layer_size = @pixel_width * @pixel_height
     output = input.scan(/.{#{layer_size}}/).map{ |layer| layer.scan(/.{#{@pixel_width}}/)}
   end
+  def fewest_digit(digit,layers)
+    digit_counts = layers.map { |layer| layer.join.count(digit)  }
+    layer_with_fewest_digit = digit_counts.min
+    required_index = digit_counts.index(layer_with_fewest_digit)
+    layers[required_index]
+  end
 end

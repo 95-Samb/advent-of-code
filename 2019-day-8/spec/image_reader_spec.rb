@@ -64,4 +64,15 @@ describe ImageReader do
       end
     end
   end
+  context "for fewest digit method" do
+    it "returns 111 for 2 and 111,222" do
+      expect(ImageReader.new(3,1).fewest_digit("2",[["111"],["222"]])). to eq(["111"])
+    end
+    it "returns 1,1,1 for 2 and [1,1,1],[2,2,2]" do
+      expect(ImageReader.new(3,1).fewest_digit("2",[["1","1","1"],["2","2","2"]])). to eq(["1","1","1"])
+    end
+    it "returns 222 for 1 and 111,222" do
+      expect(ImageReader.new(3,1).fewest_digit("1",[["111"],["222"]])). to eq(["222"])
+    end
+  end
 end
