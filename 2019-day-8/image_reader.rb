@@ -6,6 +6,6 @@ class ImageReader
     @pixel_height = height
   end
   def layers(input)
-    [[input.to_i]]
+    [input.scan(/.{#{@pixel_width}}/)]
   end
 end
