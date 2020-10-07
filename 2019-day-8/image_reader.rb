@@ -1,6 +1,4 @@
 class ImageReader
-  def execute
-  end
   def initialize(width,height)
     @pixel_width = width
     @pixel_height = height
