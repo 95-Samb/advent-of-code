@@ -26,8 +26,24 @@ describe ImageReader do
                                                           "3456789",
                                                           "4567890",
                                                           "5678901",
-                                                          "6789012",
-                                                          "7890123"]])
+                                                          "6789012"]])
+      end
+    end
+  end
+  context "for two layers" do
+    context "for layers method with width 2 and height 2" do
+      it "returns [12,34],[56,78] for 12345678" do
+        expect(ImageReader.new(2,2).layers("12345678")).to eq([["12","34"],["56","78"]])
+      end
+      it "returns [11,11],[22,22] for 11112222" do
+        expect(ImageReader.new(2,2).layers("11112222")).to eq([["11","11"],["22","22"]])
+      end
+    end
+    context "for layers method with width 5 and height 3" do
+      it "returns [12345,54321,12345],[98765,56789,98765] for 123455432112345987655678998765" do
+        layers = "123455432112345987655678998765"
+        expect(ImageReader.new(5,3).layers(layers)).to eq(
+          [["12345","54321","12345"],["98765","56789","98765"]])
       end
     end
   end
