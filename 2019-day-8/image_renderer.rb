@@ -1,6 +1,12 @@
 class ImageRenderer
   def decode(layers)
-    layers[0]
+    i = 1
+    @final_layer = layers[0]
+    while i < layers.length
+      @final_layer = combine_layers(@final_layer,layers[i])
+      i += 1
+    end
+    @final_layer
   end
   def combine_layers(top_layer,bottom_layer)
     new_layer = top_layer.dup.map(&:chars)
