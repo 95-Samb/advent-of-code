@@ -2,7 +2,7 @@ require_relative "../intcode_helpers/intcode_instructions"
 require_relative "../intcode_helpers/instruction_parameters"
 
 
-class OrchestrateManyComputers
+class LoopedAmplifierSignal
   STOP_CODE = 99
 
   def initialize(intcode,phase_setting,initial_input)
@@ -47,9 +47,9 @@ class OrchestrateManyComputers
       instruction = @amplifiers[i][:intcode][@amplifiers[i][:pointer]].digits
 
       parameters = InstructionParameters.new.identify(
-        instruction: instruction,
-        current_location: @amplifiers[i][:pointer], 
-        current_value: @amplifiers[i][:intcode]
+        instruction,
+        @amplifiers[i][:pointer],
+        @amplifiers[i][:intcode]
       )
 
       results = IntcodeInstructions.new.execute(instruction[0],@amplifiers[i][:pointer],@amplifiers[i][:intcode],parameters)
@@ -61,7 +61,8 @@ class OrchestrateManyComputers
       if instruction[0] == 3
         @amplifiers[i][:intcode][parameters[0]] = @signals[j]
       elsif instruction[0] == 4
-        @signals.push(@amplifiers[i][:intcode][parameters[0]])
+        #@signals.push(@amplifiers[i][:intcode][parameters[0]])
+        puts parameters[0]
         i += 1
         j += 1
       end
@@ -69,6 +70,7 @@ class OrchestrateManyComputers
       i = 0 if i == @amplifiers.length
 
     end
+
 
     puts @signals
   end

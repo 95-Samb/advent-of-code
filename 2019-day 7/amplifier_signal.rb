@@ -21,12 +21,5 @@ class AmplifierSignal
     0
   end
 
-  def thread_method
-    create threads
-    initiate threads with amplifier phase phase_setting
-    first thread passes when it outputs this "hits" second thread
-    process repeats untill stop code hit on computers
-    final output is answer
-  end
 
 end
