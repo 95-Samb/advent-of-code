@@ -22,7 +22,7 @@ describe ReportRepair do
       expect(ReportRepair.new.execute([2,2019,1])).to eq(2019)
     end
 
-    xit "returns 2019 for array with 2019,2,1" do
+    it "returns 2019 for array with 2019,2,1" do
       expect(ReportRepair.new.execute([2019,2,1])).to eq(2019)
     end
 end
