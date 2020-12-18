@@ -1,7 +1,7 @@
 require_relative "../report_repair"
 
 describe ReportRepair do
-  context "for execute method" do
+  context "for execute method for pair" do
 
     it "returns nil for empty string" do
       expect(ReportRepair.new.execute("",2)).to eq(nil)
@@ -33,6 +33,12 @@ describe ReportRepair do
 
     it "returns nil for array with 1,2,3,4,5,6,7,8,9" do
       expect(ReportRepair.new.execute([1,2,3,4,5,6,7,8,9],2)).to eq(nil)
+    end
+  end
+
+  context "for execute method for trio" do
+    it "returns 4034 for array with 1,2,2017" do
+      expect(ReportRepair.new.execute([1,2,2017],3)).to eq(4034)
     end
   end
 
