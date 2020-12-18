@@ -36,12 +36,18 @@ describe ReportRepair do
     end
   end
 
-  context "for find correct pair method" do
+  context "for find correct set method for pair " do
     it "returns 1,2019 for array with 2019,2,1,3,4,5,6,7" do
-      expect(ReportRepair.new.find_correct_pair([2019,2,1,3,4,5,6,7],2)).to eq([1,2019])
+      expect(ReportRepair.new.find_correct_set([2019,2,1,3,4,5,6,7],2)).to eq([1,2019])
     end
     it "returns 20,2000 for array with 2000,20,1,3,4,5,6,7" do
-      expect(ReportRepair.new.find_correct_pair([2000,20,1,3,4,5,6,7],2)).to eq([20,2000])
+      expect(ReportRepair.new.find_correct_set([2000,20,1,3,4,5,6,7],2)).to eq([20,2000])
+    end
+  end
+
+  context "for find correct set method for trio" do
+    it "returns 1,19,2000 for array with 2000,19,1,3,4,5,6,7" do
+      expect(ReportRepair.new.find_correct_set([2000,19,1,3,4,5,6,7],3)).to eq([1,19,2000])
     end
   end
 end

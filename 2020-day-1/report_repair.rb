@@ -4,15 +4,15 @@ class ReportRepair
 
     return nil if input.kind_of?(Array) == false || input.length < 2
 
-    correct_pair = find_correct_pair(input,numbers_amount)
+    correct_set = find_correct_set(input,numbers_amount)
 
-    correct_pair.inject(:*)
+    correct_set.inject(:*)
   end
 
-  def find_correct_pair(input,numbers_amount)
-    pairs = input.combination(numbers_amount).to_a
+  def find_correct_set(input,numbers_amount)
+    sets = input.combination(numbers_amount).to_a
 
-    correct_pair = pairs.keep_if {|pair| pair.sum == 2020}.flatten.sort
+    correct_set = sets.keep_if {|set| set.sum == 2020}.flatten.sort
   end
 
 end
