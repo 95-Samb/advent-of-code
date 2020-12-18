@@ -13,4 +13,19 @@ describe PasswordValidater do
   it "returns 1 for [1-1 b: ab]" do
     expect(PasswordValidater.new.execute(["1-1 b: ab"])).to eq(1)
   end
+  it "returns 1 for [1-1 b: abcdefghjk]" do
+    expect(PasswordValidater.new.execute(["1-1 b: abcdefghjk"])).to eq(1)
+  end
+  xit "returns 1 for [1-1 b: bb]" do
+    expect(PasswordValidater.new.execute(["1-1 b: bb"])).to eq(nil)
+  end
+
+  context "for password formatter method" do
+    it "returns [1,1,a,a] for 1-1 a: a" do
+      expect(PasswordValidater.new.password_formatter("1-1 a: a")).to eq(["1","1","a","a"])
+    end
+    it "returns [1,2,a,abcdef] for 1-2 a: abcdef" do
+      expect(PasswordValidater.new.password_formatter("1-2 a: abcdef")).to eq(["1","2","a","abcdef"])
+    end
+  end
 end
