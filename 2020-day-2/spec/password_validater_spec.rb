@@ -28,4 +28,12 @@ describe PasswordValidater do
       expect(PasswordValidater.new.password_formatter("1-2 a: abcdef")).to eq(["1","2","a","abcdef"])
     end
   end
+  context "for password validater method" do
+    it "returns true for [1,1,a,a] " do
+      expect(PasswordValidater.new.password_validater(["1","1","a","a"])).to eq(true)
+    end
+    it "returns nil for [1,1,a,b] " do
+      expect(PasswordValidater.new.password_validater(["1","1","a","b"])).to eq(nil)
+    end
+  end
 end

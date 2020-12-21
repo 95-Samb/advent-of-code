@@ -11,6 +11,7 @@ class PasswordValidater
     formatted_input.flatten
   end
 
-  def password_validater
+  def password_validater(input)
+    true if input[2] == input[3]
   end
 end
