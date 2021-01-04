@@ -35,5 +35,23 @@ describe PasswordValidater do
     it "returns nil for [1,1,a,b] " do
       expect(PasswordValidater.new.password_validater(["1","1","a","b"])).to eq(nil)
     end
+    it "returns true for [1,1,a,ba] " do
+      expect(PasswordValidater.new.password_validater(["1","1","a","ba"])).to eq(true)
+    end
+    it "returns true for [1,7,a,ba] " do
+      expect(PasswordValidater.new.password_validater(["1","7","a","ba"])).to eq(true)
+    end
+    it "returns nil for [2,2,a,ba] " do
+      expect(PasswordValidater.new.password_validater(["2","2","a","ba"])).to eq(nil)
+    end
+    it "returns true for [2,2,a,baa] " do
+      expect(PasswordValidater.new.password_validater(["2","2","a","baa"])).to eq(true)
+    end
+    it "returns true for [2,5,a,baaaa] " do
+      expect(PasswordValidater.new.password_validater(["2","5","a","baaaa"])).to eq(true)
+    end
+    it "returns false for [2,5,a,baaaaaa] " do
+      expect(PasswordValidater.new.password_validater(["2","5","a","baaaaaa"])).to eq(nil)
+    end
   end
 end

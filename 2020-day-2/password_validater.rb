@@ -12,6 +12,9 @@ class PasswordValidater
   end
 
   def password_validater(input)
-    true if input[2] == input[3]
+    if input[3].include? input[2]
+      true if input[3].count(input[2]) >= input[0].to_i && input[3].count(input[2]) <= input[1].to_i
+    else
+    end
   end
 end
