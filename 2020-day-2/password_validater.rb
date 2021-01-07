@@ -1,7 +1,8 @@
 class PasswordValidater
   def execute(input)
-    formatted_passwords = password_formatter(input[0])
-    return 1 if password_validater(formatted_passwords)
+    formatted_passwords = input.map { |e| password_formatter(e)  }
+    valid_passwords = formatted_passwords.map { |e| password_validater(e) }
+    valid_passwords.count(true)
   end
 
   def password_formatter(input)

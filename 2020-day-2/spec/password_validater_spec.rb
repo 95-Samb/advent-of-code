@@ -1,8 +1,8 @@
 require_relative "../password_validater"
 
 describe PasswordValidater do
-  it "returns nil for [1-1 a: b]" do
-    expect(PasswordValidater.new.execute(["1-1 a: b"])).to eq(nil)
+  it "returns 0 for [1-1 a: b]" do
+    expect(PasswordValidater.new.execute(["1-1 a: b"])).to eq(0)
   end
   it "returns 1 for [1-1 a: a]" do
     expect(PasswordValidater.new.execute(["1-1 a: a"])).to eq(1)
@@ -16,8 +16,17 @@ describe PasswordValidater do
   it "returns 1 for [1-1 b: abcdefghjk]" do
     expect(PasswordValidater.new.execute(["1-1 b: abcdefghjk"])).to eq(1)
   end
-  it "returns nil for [1-1 b: bb]" do
-    expect(PasswordValidater.new.execute(["1-1 b: bb"])).to eq(nil)
+  it "returns 0 for [1-1 b: bb]" do
+    expect(PasswordValidater.new.execute(["1-1 b: bb"])).to eq(0)
+  end
+  it "returns 0 for [2-2 b: abcdefghjk]" do
+    expect(PasswordValidater.new.execute(["2-2 b: abcdefghjk"])).to eq(0)
+  end
+  it "returns 1 for [1-1 b: abcdefghjk,1-1 b: bb]" do
+    expect(PasswordValidater.new.execute(["1-1 b: abcdefghjk","1-1 b: bb"])).to eq(1)
+  end
+  it "returns 2 for [1-1 b: abcdefghjk,1-2 b: bb]" do
+    expect(PasswordValidater.new.execute(["1-1 b: abcdefghjk","1-2 b: bb"])).to eq(2)
   end
 
   context "for password formatter method" do
