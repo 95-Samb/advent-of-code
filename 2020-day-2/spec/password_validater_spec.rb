@@ -1,32 +1,37 @@
 require_relative "../password_validater"
 
 describe PasswordValidater do
-  it "returns 0 for [1-1 a: b]" do
-    expect(PasswordValidater.new.execute(["1-1 a: b"])).to eq(0)
-  end
-  it "returns 1 for [1-1 a: a]" do
-    expect(PasswordValidater.new.execute(["1-1 a: a"])).to eq(1)
-  end
-  it "returns 1 for [1-1 b: b]" do
-    expect(PasswordValidater.new.execute(["1-1 b: b"])).to eq(1)
-  end
-  it "returns 1 for [1-1 b: ab]" do
-    expect(PasswordValidater.new.execute(["1-1 b: ab"])).to eq(1)
-  end
-  it "returns 1 for [1-1 b: abcdefghjk]" do
-    expect(PasswordValidater.new.execute(["1-1 b: abcdefghjk"])).to eq(1)
-  end
-  it "returns 0 for [1-1 b: bb]" do
-    expect(PasswordValidater.new.execute(["1-1 b: bb"])).to eq(0)
-  end
-  it "returns 0 for [2-2 b: abcdefghjk]" do
-    expect(PasswordValidater.new.execute(["2-2 b: abcdefghjk"])).to eq(0)
-  end
-  it "returns 1 for [1-1 b: abcdefghjk,1-1 b: bb]" do
-    expect(PasswordValidater.new.execute(["1-1 b: abcdefghjk","1-1 b: bb"])).to eq(1)
-  end
-  it "returns 2 for [1-1 b: abcdefghjk,1-2 b: bb]" do
-    expect(PasswordValidater.new.execute(["1-1 b: abcdefghjk","1-2 b: bb"])).to eq(2)
+  context "for execute method" do
+    it "returns 0 for [1-1 a: b]" do
+      expect(PasswordValidater.new.execute(["1-1 a: b"])).to eq(0)
+    end
+    it "returns 1 for [1-1 a: a]" do
+      expect(PasswordValidater.new.execute(["1-1 a: a"])).to eq(1)
+    end
+    it "returns 1 for [1-1 b: b]" do
+      expect(PasswordValidater.new.execute(["1-1 b: b"])).to eq(1)
+    end
+    it "returns 1 for [1-1 b: ab]" do
+      expect(PasswordValidater.new.execute(["1-1 b: ab"])).to eq(1)
+    end
+    it "returns 1 for [1-1 b: abcdefghjk]" do
+      expect(PasswordValidater.new.execute(["1-1 b: abcdefghjk"])).to eq(1)
+    end
+    it "returns 0 for [1-1 b: bb]" do
+      expect(PasswordValidater.new.execute(["1-1 b: bb"])).to eq(0)
+    end
+    it "returns 0 for [2-2 b: abcdefghjk]" do
+      expect(PasswordValidater.new.execute(["2-2 b: abcdefghjk"])).to eq(0)
+    end
+    it "returns 1 for [1-1 b: abcdefghjk,1-1 b: bb]" do
+      expect(PasswordValidater.new.execute(["1-1 b: abcdefghjk","1-1 b: bb"])).to eq(1)
+    end
+    it "returns 2 for [1-1 b: abcdefghjk,1-2 b: bb]" do
+      expect(PasswordValidater.new.execute(["1-1 b: abcdefghjk","1-2 b: bb"])).to eq(2)
+    end
+    it "returns 2 for [1-1 b: abcdefghjk,1-2 b: bb,1-1 b: bb]" do
+      expect(PasswordValidater.new.execute(["1-1 b: abcdefghjk","1-2 b: bb","1-1 b: bb"])).to eq(2)
+    end
   end
 
   context "for password formatter method" do
