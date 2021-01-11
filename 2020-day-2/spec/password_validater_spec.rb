@@ -64,8 +64,16 @@ describe PasswordValidater do
     it "returns true for [2,5,a,baaaa] " do
       expect(PasswordValidater.new.password_validater([2,5,"a","baaaa"])).to eq(true)
     end
-    it "returns false for [2,5,a,baaaaaa] " do
+    it "returns nil for [2,5,a,baaaaaa] " do
       expect(PasswordValidater.new.password_validater([2,5,"a","baaaaaa"])).to eq(nil)
+    end
+  end
+  context "for second password validater method" do
+    it "returns true for [1,1,a,a] " do
+      expect(PasswordValidater.new.second_password_validater([1,1,"a","a"])).to eq(true)
+    end
+    it "returns nil for [1,1,b,a] " do
+      expect(PasswordValidater.new.second_password_validater([1,1,"b","a"])).to eq(nil)
     end
   end
 end

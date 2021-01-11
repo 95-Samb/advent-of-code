@@ -18,4 +18,8 @@ class PasswordValidater
     else
     end
   end
+
+  def second_password_validater(input)
+    true if input[2] == input[3]
+  end
 end
