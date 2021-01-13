@@ -7,4 +7,8 @@ passwords = InputConverter.new.execute(input)
 
 answer = PasswordValidater.new.execute(passwords)
 
+second_answer = PasswordValidater.new.second_execute(passwords)
+
 puts answer
+
+puts second_answer

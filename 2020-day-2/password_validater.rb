@@ -20,6 +20,13 @@ class PasswordValidater
   end
 
   def second_password_validater(input)
-    true if input[2] == input[3][input[0] - 1]
+    true if input[2] == input[3][input[0] - 1] ||
+    input[2] == input[3][input[1] - 1]
+  end
+
+  def second_execute(input)
+    formatted_passwords = input.map { |e| password_formatter(e)  }
+    valid_passwords = formatted_passwords.map { |e| second_password_validater(e) }
+    valid_passwords.count(true)
   end
 end

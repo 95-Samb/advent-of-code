@@ -81,5 +81,22 @@ describe PasswordValidater do
     it "returns nil for [2,2,a,ab] " do
       expect(PasswordValidater.new.second_password_validater([2,2,"a","ab"])).to eq(nil)
     end
+    it "returns true for [2,1,a,ab] " do
+      expect(PasswordValidater.new.second_password_validater([2,1,"a","ab"])).to eq(true)
+    end
+    it "returns true for [2,5,e,abcdefghjk] " do
+      expect(PasswordValidater.new.second_password_validater([2,5,"e","abcdefghjk"])).to eq(true)
+    end
+  end
+  context "for second execute method" do
+    it "returns 1 for [1-1 a: a]" do
+      expect(PasswordValidater.new.second_execute(["1-1 a: a"])).to eq(1)
+    end
+    it "returns 0 for [1-1 a: b]" do
+      expect(PasswordValidater.new.second_execute(["1-1 a: b"])).to eq(0)
+    end
+    it "returns 2 for [1-1 b: abcdefghjk,1-2 b: bb,1-1 b: bb]" do
+      expect(PasswordValidater.new.execute(["1-1 b: abcdefghjk","1-2 b: bb","1-1 b: bb"])).to eq(2)
+    end
   end
 end
