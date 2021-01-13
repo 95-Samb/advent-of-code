@@ -20,8 +20,10 @@ class PasswordValidater
   end
 
   def second_password_validater(input)
-    true if input[2] == input[3][input[0] - 1] ||
-    input[2] == input[3][input[1] - 1]
+    if input[2] == input[3][input[0] - 1]
+      true if input[2] != input[3][input[1] - 1]
+    else true if input[2] == input[3][input[1] - 1]
+    end
   end
 
   def second_execute(input)
