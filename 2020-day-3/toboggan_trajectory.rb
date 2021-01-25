@@ -3,9 +3,10 @@ class TobogganTrajectory
     i = 1
     output = 0
     while i < input.length
-      if input[i][i * 3 % input[0].length] == "#"
+      if input[i][i * 3 % input[i].length] == "#"
         output += 1
       end
+      #puts "#{i},#{i * 3 % input[i].length}"
       i += 1
     end
     output

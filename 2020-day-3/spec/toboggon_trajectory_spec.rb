@@ -41,4 +41,6 @@ describe TobogganTrajectory do
       ".#..#...#.#"])).to eq(7)
   end
 
+
+
 end
