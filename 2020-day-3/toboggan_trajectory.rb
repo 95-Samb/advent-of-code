@@ -1,14 +1,21 @@
 class TobogganTrajectory
+
   def execute(input)
+    trees_hit(input)
+  end
+
+  def trees_hit(input)
+    @input = input
     i = 1
-    output = 0
+    total_trees_hit = 0
+    def hits_tree(point)
+      @input[point][point * 3 % @input[point].length] == "#"
+    end
     while i < input.length
-      if input[i][i * 3 % input[i].length] == "#"
-        output += 1
-      end
-      #puts "#{i},#{i * 3 % input[i].length}"
+      hits_tree(i) ? total_trees_hit += 1 : nil
       i += 1
     end
-    output
+    total_trees_hit
   end
+
 end
