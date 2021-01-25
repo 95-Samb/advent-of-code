@@ -1,10 +1,6 @@
 class TobogganTrajectory
 
-  def execute(input)
-    trees_hit(input)
-  end
-
-  def trees_hit(input)
+  def trees_hit(input,down,right)
     @input = input
     i = 1
     total_trees_hit = 0

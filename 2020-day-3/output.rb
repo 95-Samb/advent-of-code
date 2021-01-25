@@ -5,6 +5,6 @@ input = File.read("input.txt")
 
 slope = InputConverter.new.execute(input)
 
-answer = TobogganTrajectory.new.execute(slope)
+answer = TobogganTrajectory.new.trees_hit(slope,1,3)
 
 puts answer
