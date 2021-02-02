@@ -51,7 +51,7 @@ describe TobogganTrajectory do
 
   context "for least trees hit method" do
     it "returns 336 for given inputs" do
-      expect(TobogganTrajectory.new.least_trees_hit(["..##.......",
+      expect(TobogganTrajectory.new.total_trees_hit(["..##.......",
         "#...#...#..",
         ".#....#..#.",
         "..#.#...#.#",

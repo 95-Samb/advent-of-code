@@ -18,7 +18,7 @@ class TobogganTrajectory
     total_trees_hit
   end
 
-  def least_trees_hit(input,slopes)
+  def total_trees_hit(input,slopes)
     slopes.map! { |e| trees_hit(input,*e)}
     slopes.inject(&:*)
   end
