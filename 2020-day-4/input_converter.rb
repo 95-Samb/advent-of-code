@@ -1,5 +1,5 @@
 class InputConverter
   def execute(input)
-    input.split("\n\n")
+    input.split(/\n\r/)
   end
 end
