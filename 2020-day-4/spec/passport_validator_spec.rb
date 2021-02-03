@@ -11,4 +11,13 @@ describe PassportValidator do
     expect(PassportValidator.new.execute("iyr:2013 ecl:amb cid:350 eyr:2023 pid:028048884
     hcl:#cfa07d byr:1929")).to eq(0)
   end
+  it "returns 1 for hcl:#ae17e1 iyr:2013
+    eyr:2024
+    ecl:brn pid:760753108 byr:1931
+    hgt:179cm" do
+    expect(PassportValidator.new.execute("hcl:#ae17e1 iyr:2013
+    eyr:2024
+    ecl:brn pid:760753108 byr:1931
+    hgt:179cm")). to eq(1)
+  end
 end
