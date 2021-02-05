@@ -11,13 +11,13 @@ describe PassportValidator do
       hgt:179cm"
   context "for single passport" do
     it "returns 1 for valid_passport" do
-      expect(PassportValidator.new.password_validation(valid_passport)).to eq(true)
+      expect(PassportValidator.new.passport_validation(valid_passport)).to eq(true)
     end
     it "returns 0 for invalid_passport" do
-      expect(PassportValidator.new.password_validation(invalid_passport)).to eq(false)
+      expect(PassportValidator.new.passport_validation(invalid_passport)).to eq(false)
     end
     it "returns 1 for valid_north_pole" do
-      expect(PassportValidator.new.password_validation(valid_north_pole)). to eq(true)
+      expect(PassportValidator.new.passport_validation(valid_north_pole)). to eq(true)
     end
   end
   context "for two passports" do
@@ -27,6 +27,13 @@ describe PassportValidator do
     it "returns 1 for 2 valid_north_pole, 3 invalid pasport, 4 valid_passport" do
       expect(PassportValidator.new.amount_with_required_fields([valid_north_pole] * 2 +
       [invalid_passport] * 3 + [valid_passport] * 4)).to eq(6)
+    end
+  end
+  context "for valid fields method" do
+    valid_fields_passport = "pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:1980
+      hcl:#623a2f"
+    it "returns true for valid_fields_passport" do
+      expect(PassportValidator.new.valid_fields?(valid_fields_passport)).to eq(true)
     end
   end
 end
