@@ -5,7 +5,7 @@ input = File.read("input.txt")
 
 passports = InputConverter.new.execute(input)
 
-answer = PassportValidator.new.execute(passports)
+answer = PassportValidator.new.amount_with_required_fields(passports)
 
 puts answer
 

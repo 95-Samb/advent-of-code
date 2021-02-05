@@ -22,10 +22,10 @@ describe PassportValidator do
   end
   context "for two passports" do
     it "returns 1 for a valid and a invalid pasport" do
-      expect(PassportValidator.new.execute([valid_passport,invalid_passport])).to eq(1)
+      expect(PassportValidator.new.amount_with_required_fields([valid_passport,invalid_passport])).to eq(1)
     end
     it "returns 1 for 2 valid_north_pole, 3 invalid pasport, 4 valid_passport" do
-      expect(PassportValidator.new.execute([valid_north_pole] * 2 +
+      expect(PassportValidator.new.amount_with_required_fields([valid_north_pole] * 2 +
       [invalid_passport] * 3 + [valid_passport] * 4)).to eq(6)
     end
   end

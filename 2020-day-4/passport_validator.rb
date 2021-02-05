@@ -1,5 +1,5 @@
 class PassportValidator
-  def execute(input)
+  def amount_with_required_fields(input)
     input.keep_if { |e| password_validation(e)}
     input.length
   end
