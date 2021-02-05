@@ -1,6 +1,7 @@
 class PassportValidator
   def execute(input)
-    input.map{ |e| password_validation(e)}.count(true)
+    input.keep_if { |e| password_validation(e)}
+    input.length
   end
 
   def password_validation(password)
