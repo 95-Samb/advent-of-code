@@ -32,8 +32,13 @@ describe PassportValidator do
   context "for valid fields method" do
     valid_fields_passport = "pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:1980
       hcl:#623a2f"
+    invalid_fields_passport = "eyr:1972 cid:100
+      hcl:#18171d ecl:amb hgt:170 pid:186cm iyr:2018 byr:1926"
     it "returns true for valid_fields_passport" do
       expect(PassportValidator.new.valid_fields?(valid_fields_passport)).to eq(true)
+    end
+    it "returns false for invalid_fields_passport" do
+      expect(PassportValidator.new.valid_fields?(invalid_fields_passport)).to eq(false)
     end
   end
 end
