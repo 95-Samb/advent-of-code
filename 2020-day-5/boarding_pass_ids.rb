@@ -1,5 +1,8 @@
+require_relative "boarding_pass"
+
 class BoardingPassIds
   def execute(passes)
-    [5]
+    pass = BoardingPass.new(passes[0])
+    [pass.row_identify * 8 + pass.column_identify]
   end
 end
