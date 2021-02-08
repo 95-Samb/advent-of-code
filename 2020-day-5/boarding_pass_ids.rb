@@ -3,11 +3,17 @@ require_relative "boarding_pass"
 class BoardingPassIds
   def execute(passes)
     pass_ids = passes.map { |e|
-      pass = BoardingPass.new(e)
-      pass.row_identify * 8 + pass.column_identify
+      BoardingPass.new(e).id
       }
   end
   def gap(ids)
-    2
+    sorted_ids = ids.sort
+    i = 0
+    until i == sorted_ids.length
+      return sorted_ids[i] + 1 if sorted_ids[i + 1] - sorted_ids[i] != 1
+      i += 1
+    end
+
+
   end
 end

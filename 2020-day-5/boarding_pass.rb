@@ -1,8 +1,15 @@
 class BoardingPass
+
   def initialize(pass)
     @row_id = pass[0..6]
     @column_id = pass[7..-1]
   end
+
+  def id
+    row_identify * 8 + column_identify
+  end
+
+  private
 
   def row_identify
     row_max = 127
@@ -31,4 +38,7 @@ class BoardingPass
     end
     column_min
   end
+
+
+
 end
