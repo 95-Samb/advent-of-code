@@ -23,6 +23,23 @@ describe BoardingPass do
     it "returns 62 for FBBBBBFLLL" do
       expect(BoardingPass.new("FBBBBBFLLL").row_identify).to eq(62)
     end
+    it "returns 44 for FBFBBFFRLR" do
+      expect(BoardingPass.new("FBFBBFFRLR").row_identify).to eq(44)
+    end
+    it "returns 70 for BFFFBBFRRR" do
+      expect(BoardingPass.new("BFFFBBFRRR").row_identify).to eq(70)
+    end
+    it "returns 14 for FFFBBBFRRR" do
+      expect(BoardingPass.new("FFFBBBFRRR").row_identify).to eq(14)
+    end
+    it "returns 102 for BBFFBBFRLL" do
+      expect(BoardingPass.new("BBFFBBFRLL").row_identify).to eq(102)
+    end
+    it "returns 113 for BBBFFFBLRL" do
+      expect(BoardingPass.new("BBBFFFBLRL").row_identify).to eq(113)
+    end
+
+
   end
 
   context "for column identify function" do

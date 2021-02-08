@@ -11,6 +11,13 @@ describe BoardingPassIds do
     it "returns 513 for BFFFFFFLLR" do
       expect(BoardingPassIds.new.execute(["BFFFFFFLLR"])).to eq([513])
     end
+    it "returns 1023 for BBBBBBBRRR" do
+      expect(BoardingPassIds.new.execute(["BBBBBBBRRR"])).to eq([1023])
+    end
+    it "returns 906 for BBBFFFBLRL" do
+      expect(BoardingPassIds.new.execute(["BBBFFFBLRL"])).to eq([906])
+    end
+
   end
   context "for multiple boarding passes" do
     it "returns 5,512 for FFFFFFFLLL,BFFFFFFLLL" do

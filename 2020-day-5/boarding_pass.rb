@@ -10,7 +10,7 @@ class BoardingPass
     i = 0
     until i == 7
       if @row_id[i] == "F"
-        row_max /= 2
+        row_max -= (row_max - row_min) / 2 + 1
       else row_min  += (row_max - row_min) / 2 + 1
       end
       i += 1
@@ -24,7 +24,7 @@ class BoardingPass
     i = 0
     until i == 3
       if @column_id[i] == "L"
-        column_max /= 2
+        column_max -= (column_max - column_min) / 2 + 1
       else column_min  += (column_max - column_min) / 2 + 1
       end
       i += 1
