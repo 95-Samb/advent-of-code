@@ -5,17 +5,16 @@ class BoardingPass
   end
 
   def row_identify
-    if @row_id[0] == "F"
-      0
-    else
-      if @row_id[1] == "F"
-        64
-      else
-        if @row_id[2] == "F"
-          96
-        else 112
-        end
+    row_max = 127
+    row_min = 0
+    i = 0
+    until i == 6
+      if @row_id[i] == "F"
+        row_max /= 2
+      else row_min  += (row_max - row_min) / 2 + 1
       end
+      i += 1
     end
+    row_min
   end
 end
