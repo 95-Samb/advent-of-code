@@ -8,7 +8,7 @@ class BoardingPass
     row_max = 127
     row_min = 0
     i = 0
-    until i == 6
+    until i == 7
       if @row_id[i] == "F"
         row_max /= 2
       else row_min  += (row_max - row_min) / 2 + 1

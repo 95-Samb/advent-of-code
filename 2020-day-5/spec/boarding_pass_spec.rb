@@ -17,5 +17,12 @@ describe BoardingPass do
     it "returns 32 for FBFFFFFLLL" do
       expect(BoardingPass.new("FBFFFFFLLL").row_identify).to eq(32)
     end
+    it "returns 63 for FBBBBBBLLL" do
+      expect(BoardingPass.new("FBBBBBBLLL").row_identify).to eq(63)
+    end
+    it "returns 62 for FBBBBBFLLL" do
+      expect(BoardingPass.new("FBBBBBFLLL").row_identify).to eq(62)
+    end
   end
+
 end
