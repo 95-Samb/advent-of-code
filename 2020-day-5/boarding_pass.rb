@@ -5,6 +5,17 @@ class BoardingPass
   end
 
   def row_identify
-    0
+    if @row_id[0] == "F"
+      0
+    else
+      if @row_id[1] == "F"
+        64
+      else
+        if @row_id[2] == "F"
+          96
+        else 112
+        end
+      end
+    end
   end
 end
