@@ -17,4 +17,18 @@ class BoardingPass
     end
     row_min
   end
+
+  def column_identify
+    column_max = 7
+    column_min = 0
+    i = 0
+    until i == 3
+      if @column_id[i] == "L"
+        column_max /= 2
+      else column_min  += (column_max - column_min) / 2 + 1
+      end
+      i += 1
+    end
+    column_min
+  end
 end

@@ -25,4 +25,16 @@ describe BoardingPass do
     end
   end
 
+  context "for column identify function" do
+    it "returns 0 for FFFFFFFLLL" do
+      expect(BoardingPass.new("FFFFFFFLLL").column_identify).to eq(0)
+    end
+    it "returns 1 for FFFFFFFLLR" do
+      expect(BoardingPass.new("FFFFFFFLLR").column_identify).to eq(1)
+    end
+    it "returns 3 for FFFFFFFLRR" do
+      expect(BoardingPass.new("FFFFFFFLRR").column_identify).to eq(3)
+    end
+  end
+
 end
