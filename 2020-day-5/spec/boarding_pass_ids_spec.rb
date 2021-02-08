@@ -28,4 +28,9 @@ describe BoardingPassIds do
       to eq([0,512,513])
     end
   end
+  context "for identifying gap method" do
+    it "returns 2 for 1,3" do
+      expect(BoardingPassIds.new.gap([1,3])).to eq(2)
+    end
+  end
 end

@@ -7,4 +7,7 @@ class BoardingPassIds
       pass.row_identify * 8 + pass.column_identify
       }
   end
+  def gap(ids)
+    2
+  end
 end
