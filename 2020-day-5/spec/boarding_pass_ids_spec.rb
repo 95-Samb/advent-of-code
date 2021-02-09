@@ -38,5 +38,8 @@ describe BoardingPassIds do
     it "returns 3 for 4,1,2" do
       expect(BoardingPassIds.new.gap([4,1,2])).to eq(3)
     end
+    it "returns 3 for 6,9,7,8,10,4,1,2" do
+      expect(BoardingPassIds.new.gap([6,9,7,8,10,4,1,2])).to eq(3)
+    end
   end
 end

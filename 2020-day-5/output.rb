@@ -7,6 +7,10 @@ boarding_passes = InputConverter.new.execute(input)
 
 boarding_ids = BoardingPassIds.new.execute(boarding_passes)
 
+second_answer = BoardingPassIds.new.gap(boarding_ids)
+
 answer = boarding_ids.max
 
 puts answer
+
+puts second_answer
