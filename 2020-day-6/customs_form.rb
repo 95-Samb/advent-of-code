@@ -1,5 +1,5 @@
 class CustomsForm
   def yes_answers(form)
-    1
+    form.gsub(/\W/,"").chars.uniq.length
   end
 end
