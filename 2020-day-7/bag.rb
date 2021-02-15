@@ -4,6 +4,10 @@ class Bag
     @description = description
   end
 
+  def name
+    name = @description.split(" contain ")[0].chop
+  end
+
   def contents
     content = @description.chop.split("contain ")[1].split(", ")
     content_hash = {}
