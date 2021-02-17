@@ -6,8 +6,15 @@ class BagProcessing
 
   def totally_contains(bag)
     directly_contained = directly_contains(bag)
-    indirectly_contained = directly_contains(directly_contained[0])
-    directly_contained + indirectly_contained
+    indirectly_contained = []
+    totally_contained = directly_contained
+    until directly_contained.empty? do
+      directly_contained.each { |e|  indirectly_contained.push(directly_contains(e))}
+      totally_contained += indirectly_contained
+      directly_contained = indirectly_contained.flatten
+      indirectly_contained = []
+    end
+    totally_contained.flatten
   end
 
   def directly_contains(bag)
