@@ -14,7 +14,7 @@ class BagProcessing
       directly_contained = indirectly_contained.flatten
       indirectly_contained = []
     end
-    totally_contained.flatten
+    totally_contained.flatten.uniq
   end
 
   def directly_contains(bag)
