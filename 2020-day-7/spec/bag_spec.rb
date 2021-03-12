@@ -6,6 +6,7 @@ describe Bag do
   subject2 = "light red bags contain 1 bright white bag, 2 muted yellow bags."
   subject3 = "drab bronze bags contain 5 plaid lavender bags, 1 muted yellow bag, 5 vibrant coral bags."
   subject4 = "pale magenta bags contain 1 clear gold bag, 5 posh fuchsia bags, 2 faded cyan bags."
+  subject5 = "vibrant blue bags contain no other bags."
 
   context "for contents method" do
 
@@ -39,6 +40,11 @@ describe Bag do
       for #{subject4}" do
       expect(Bag.new(subject4).contents).
       to eq({"clear gold bag" => 1,"posh fuchsia bag" => 5, "faded cyan bag" => 2})
+    end
+
+    it "returns nil for #{subject5}" do
+      expect(Bag.new(subject5).contents).
+      to eq(nil)
     end
 
 
