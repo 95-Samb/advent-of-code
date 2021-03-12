@@ -86,10 +86,13 @@ describe BagProcessing do
 
     subject = [{name:"shiny gold bag",contents:{"bright red bag" => 1}}]
 
-    subject2 = [{name:"shiny gold bag",contents:{"bright red bag" => 1}},
+    subject2 = [{name:"shiny gold bag",contents:{"bright red bag" => 2,
+      "bright white bag" => 2}}]
+
+    subject3 = [{name:"shiny gold bag",contents:{"bright red bag" => 1}},
     {name:"bright red bag",contents:{"bright white bag" => 1}}]
 
-    subject3 = [{name:"shiny gold bag",contents:{"bright pink bag" => 3}},
+    subject4 = [{name:"shiny gold bag",contents:{"bright pink bag" => 3}},
     {name:"bright pink bag",contents:{"bright white bag" => 3}}]
 
     it "returns nil for []" do
@@ -102,17 +105,36 @@ describe BagProcessing do
       to eq(1)
     end
 
-    xit "returns 2 for #{subject2}" do
+    it "returns 4 for #{subject2}" do
       expect(BagProcessing.new(subject2).total_bags("shiny gold bag")).
+      to eq(4)
+    end
+
+    xit "returns 2 for #{subject3}" do
+      expect(BagProcessing.new(subject3).total_bags("shiny gold bag")).
       to eq(2)
     end
 
-    xit "returns 12 for #{subject3}" do
-      expect(BagProcessing.new(subject3).total_bags("shiny gold bag")).
+    xit "returns 12 for #{subject4}" do
+      expect(BagProcessing.new(subject4).total_bags("shiny gold bag")).
       to eq(12)
     end
 
   end
+
+  context "#hash_expander" do
+
+    it "returns a,a,a for {a => 3}" do
+      expect(BagProcessing.new([]).hash_expander({"a" => 3})).
+      to eq(["a","a","a"])
+    end
+
+    it "returns a,a,b,b,c,c for {a => 2,b => 2,c => 2}" do
+      expect(BagProcessing.new([]).hash_expander({"a" => 2,"b" => 2,"c" => 2})).
+      to eq(["a","a","b","b","c","c"])
+    end
+  end
+
 
 
 end
