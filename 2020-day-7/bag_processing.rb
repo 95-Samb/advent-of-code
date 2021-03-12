@@ -28,4 +28,13 @@ class BagProcessing
 
     contains
   end
+
+  def total_bags(bag)
+    current_bag = @bags.select { |e| e[:name] == bag  }
+    unless current_bag.empty?
+      1
+    else
+      nil
+    end
+  end
 end

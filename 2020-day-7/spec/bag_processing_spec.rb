@@ -1,7 +1,7 @@
 require_relative "../bag_processing"
 
 describe BagProcessing do
-  context "for directly contains method" do
+  context "#directly_contains" do
     subject = [{name:"bright white bag",contents:{"shiny gold bag" => 1}}]
     subject2 = [{name:"bright white bag",contents:{"shiny gold bag" => 1}},
       {name:"matte white bag",contents:{"shiny gold bag" => 1}}]
@@ -14,7 +14,7 @@ describe BagProcessing do
       to eq(["bright white bag","matte white bag"])
     end
   end
-  context "for totally contains method" do
+  context "#totally_contains" do
 
     subject = [{name:"bright white bag",contents:{"shiny gold bag" => 1}},
     {name:"matte white bag",contents:{"bright white bag" => 1}}]
@@ -81,4 +81,38 @@ describe BagProcessing do
     end
 
   end
+
+  context "#total_bags" do
+
+    subject = [{name:"shiny gold bag",contents:{"bright red bag" => 1}}]
+
+    subject2 = [{name:"shiny gold bag",contents:{"bright red bag" => 1}},
+    {name:"bright red bag",contents:{"bright white bag" => 1}}]
+
+    subject3 = [{name:"shiny gold bag",contents:{"bright pink bag" => 3}},
+    {name:"bright pink bag",contents:{"bright white bag" => 3}}]
+
+    it "returns nil for []" do
+      expect(BagProcessing.new([]).total_bags("shiny gold bag")).
+      to eq(nil)
+    end
+
+    it "returns 1 for #{subject}" do
+      expect(BagProcessing.new(subject).total_bags("shiny gold bag")).
+      to eq(1)
+    end
+
+    xit "returns 2 for #{subject2}" do
+      expect(BagProcessing.new(subject2).total_bags("shiny gold bag")).
+      to eq(2)
+    end
+
+    xit "returns 12 for #{subject3}" do
+      expect(BagProcessing.new(subject3).total_bags("shiny gold bag")).
+      to eq(12)
+    end
+
+  end
+
+
 end
