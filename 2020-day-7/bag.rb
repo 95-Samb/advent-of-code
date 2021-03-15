@@ -11,7 +11,7 @@ class Bag
   def contents
     content = @description.chop.split("contain ")[1].split(", ")
     if content.include?("no other bags")
-      return nil
+      return {}
     else
       content_hash = {}
       content.each { |e|

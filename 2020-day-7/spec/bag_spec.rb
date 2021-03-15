@@ -42,9 +42,9 @@ describe Bag do
       to eq({"clear gold bag" => 1,"posh fuchsia bag" => 5, "faded cyan bag" => 2})
     end
 
-    it "returns nil for #{subject5}" do
+    it "returns {} for #{subject5}" do
       expect(Bag.new(subject5).contents).
-      to eq(nil)
+      to eq({})
     end
 
 
