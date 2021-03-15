@@ -110,12 +110,12 @@ describe BagProcessing do
       to eq(4)
     end
 
-    xit "returns 2 for #{subject3}" do
+    it "returns 2 for #{subject3}" do
       expect(BagProcessing.new(subject3).total_bags("shiny gold bag")).
       to eq(2)
     end
 
-    xit "returns 12 for #{subject4}" do
+    it "returns 12 for #{subject4}" do
       expect(BagProcessing.new(subject4).total_bags("shiny gold bag")).
       to eq(12)
     end

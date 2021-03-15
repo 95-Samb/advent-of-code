@@ -30,12 +30,19 @@ class BagProcessing
   end
 
   def total_bags(bag)
-    current_bag = @bags.select { |e| e[:name] == bag  }
-    unless current_bag.empty?
-      hash_expander(current_bag[0][:contents]).length
-    else
-      nil
+    current_bags = @bags.select { |e| e[:name] == bag  }
+    next_bags = []
+    total = 0
+    until current_bags.empty?
+      current_bags.each { |e|
+        contents = hash_expander(e[:contents])
+        total += contents.length
+        contents.each { |x|  next_bags += @bags.select { |e| e[:name] == x  }}
+      }
+      current_bags = next_bags
+      next_bags = []
     end
+    total != 0 ? total : nil
   end
 
   def hash_expander(hash)
