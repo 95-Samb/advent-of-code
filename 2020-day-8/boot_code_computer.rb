@@ -5,9 +5,14 @@ class BootCodeComputer
 
   def execute
     total = 0
-    @bootcode.each do |e|
-      if e[:acc]
-        total += e[:acc]
+    i = 0
+
+    (@bootcode.length - 1).times do
+      if @bootcode[i][:acc]
+        total += @bootcode[i][:acc]
+      elsif @bootcode[i][:jmp]
+        i += @bootcode[i][:jmp]
+        i % @bootcode.length
       end
     end
     total
