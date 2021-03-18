@@ -6,14 +6,17 @@ class BootCodeComputer
   def execute
     total = 0
     i = 0
+    index_array = [0]
 
-    (@bootcode.length - 1).times do
-      if @bootcode[i][:acc]
-        total += @bootcode[i][:acc]
-      elsif @bootcode[i][:jmp]
-        i += @bootcode[i][:jmp]
-        i % @bootcode.length
-      end
+    until index_array != index_array.uniq
+
+      total += @bootcode[i][:acc] if @bootcode[i][:acc]
+
+      i += (@bootcode[i][:jmp] ? @bootcode[i][:jmp] : 1)
+      i = i % @bootcode.length
+
+      index_array.push(i)
+
     end
     total
 
