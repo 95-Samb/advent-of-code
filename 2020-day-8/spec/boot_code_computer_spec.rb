@@ -35,4 +35,14 @@ describe BootCodeComputer do
     end
 
   end
+
+  context "given simple bootcode with last instruction condition" do
+
+    bootcode = [{acc:1},{jmp:-1},{nop:1}]
+
+    it "processes #{bootcode}" do
+      expect(BootCodeComputer.new(bootcode,"last instruction").execute).to eq nil
+    end
+
+  end
 end

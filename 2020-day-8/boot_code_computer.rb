@@ -19,6 +19,8 @@ class BootCodeComputer
       index_array.push(i)
 
     end
+    return nil if !index_array.include?(@bootcode.length - 1) &&
+    @condition == "last instruction"
     total
 
   end
