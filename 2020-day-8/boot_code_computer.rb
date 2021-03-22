@@ -1,6 +1,7 @@
 class BootCodeComputer
-  def initialize(bootcode)
+  def initialize(bootcode,condition)
     @bootcode = bootcode
+    @condition = condition
   end
 
   def execute

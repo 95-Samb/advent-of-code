@@ -7,11 +7,11 @@ describe BootCodeComputer do
     other_bootcode = [{acc:2},{jmp:1}]
 
     it "processes #{bootcode}" do
-      expect(BootCodeComputer.new(bootcode).execute).to eq 1
+      expect(BootCodeComputer.new(bootcode,"infinite loop").execute).to eq 1
     end
 
     it "processes #{other_bootcode}" do
-      expect(BootCodeComputer.new(other_bootcode).execute).to eq 2
+      expect(BootCodeComputer.new(other_bootcode,"infinite loop").execute).to eq 2
     end
 
   end
@@ -20,13 +20,18 @@ describe BootCodeComputer do
 
     bootcode = [{acc:1},{jmp:2},{acc:10}]
     other_bootcode = [{acc:1},{jmp:4},{acc:10},{nop:3},{acc:2}]
+    another_bootcode = [{acc:1},{nop:3},{jmp:4},{acc:3},{jmp:2},{acc:99},{acc:2},{jmp:4}]
 
     it "processes #{bootcode}" do
-      expect(BootCodeComputer.new(bootcode).execute).to eq 1
+      expect(BootCodeComputer.new(bootcode,"infinite loop").execute).to eq 1
     end
 
     it "processes #{other_bootcode}" do
-      expect(BootCodeComputer.new(other_bootcode).execute).to eq 1
+      expect(BootCodeComputer.new(other_bootcode,"infinite loop").execute).to eq 1
+    end
+
+    it "processes #{another_bootcode}" do
+      expect(BootCodeComputer.new(another_bootcode,"infinite loop").execute).to eq 6
     end
 
   end
