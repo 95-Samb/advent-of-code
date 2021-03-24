@@ -45,4 +45,21 @@ describe BootCodeComputer do
     end
 
   end
+
+  context "for identify instructions method" do
+
+    bootcode = [{acc:1},{jmp:-1},{jmp:1}]
+
+    other_bootcode = [{acc:1},{jmp:-1},{jmp:1},{nop:10}]
+
+    it "returns [1,2] for #{bootcode}" do
+      expect(BootCodeComputer.new(bootcode,"last instruction")
+      .identify_instructions(:jmp)).to eq [1,2]
+    end
+
+    it "returns [1,2] for #{other_bootcode}" do
+      expect(BootCodeComputer.new(other_bootcode,"last instruction")
+      .identify_instructions(:nop)).to eq [3]
+    end
+  end
 end

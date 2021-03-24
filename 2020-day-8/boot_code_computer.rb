@@ -24,4 +24,10 @@ class BootCodeComputer
     total
 
   end
+
+  def identify_instructions(instruction)
+    index_array = []
+    @bootcode.each_index { |i| index_array.push(i) if @bootcode[i][instruction] }
+    index_array
+  end
 end
