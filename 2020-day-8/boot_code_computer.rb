@@ -30,4 +30,23 @@ class BootCodeComputer
     @bootcode.each_index { |i| index_array.push(i) if @bootcode[i][instruction] }
     index_array
   end
+
+  def infinite_fix
+    nop_instructions = identify_instructions(:nop)
+    jmp_instructions = identify_instructions(:jmp)
+    output = []
+
+    jmp_instructions.each do |e|
+      @bootcode[e][:nop] = @bootcode[e].delete :jmp
+      output.push(BootCodeComputer.new(@bootcode,"last instruction").execute)
+      @bootcode[e][:jmp] = @bootcode[e].delete :nop
+    end
+
+    nop_instructions.each do |e|
+      @bootcode[e][:jmp] = @bootcode[e].delete :nop
+      output.push(BootCodeComputer.new(@bootcode,"last instruction").execute)
+      @bootcode[e][:nop] = @bootcode[e].delete :jmp
+    end
+    output
+  end
 end

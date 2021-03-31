@@ -57,9 +57,26 @@ describe BootCodeComputer do
       .identify_instructions(:jmp)).to eq [1,2]
     end
 
-    it "returns [1,2] for #{other_bootcode}" do
+    it "returns [3] for #{other_bootcode}" do
       expect(BootCodeComputer.new(other_bootcode,"last instruction")
       .identify_instructions(:nop)).to eq [3]
+    end
+  end
+
+  context "for infinite fix method" do
+
+    bootcode = [{nop:1},{jmp:-1},{acc:1}]
+
+    other_bootcode = [{nop:1},{nop:2},{jmp:2},{jmp:1}]
+
+    it "returns nil,1 for  #{bootcode}" do
+      expect(BootCodeComputer.new(bootcode,"last instruction").infinite_fix).
+      to eq [1,nil]
+    end
+
+    it "returns nil,1 for  #{other_bootcode}" do
+      expect(BootCodeComputer.new(other_bootcode,"last instruction").infinite_fix).
+      to eq [0,nil,nil,0]
     end
   end
 end
