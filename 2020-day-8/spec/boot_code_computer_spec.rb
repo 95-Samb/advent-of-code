@@ -71,12 +71,12 @@ describe BootCodeComputer do
 
     it "returns nil,1 for  #{bootcode}" do
       expect(BootCodeComputer.new(bootcode,"last instruction").infinite_fix).
-      to eq [1,nil]
+      to contain_exactly nil,1
     end
 
     it "returns nil,1 for  #{other_bootcode}" do
       expect(BootCodeComputer.new(other_bootcode,"last instruction").infinite_fix).
-      to eq [0,nil,nil,0]
+      to contain_exactly 0,nil,nil,0
     end
   end
 end
