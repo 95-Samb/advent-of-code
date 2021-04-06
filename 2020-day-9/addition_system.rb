@@ -10,7 +10,7 @@ class AdditionSystem
     if possible_sums.any?(@numbers[-1])
       []
     else
-      return [@numbers[2]]
+      return [@numbers[-1]]
     end
 
   end
