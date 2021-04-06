@@ -4,7 +4,7 @@ class AdditionSystem
     @numbers = numbers
   end
 
-  def no_sum(preamble)
+  def no_pair_sum(preamble)
     return [] if @numbers.empty?
     possible_sums = @numbers[0..-2].combination(2).to_a.map(&:sum)
     if possible_sums.any?(@numbers[-1])
