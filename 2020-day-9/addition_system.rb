@@ -6,7 +6,8 @@ class AdditionSystem
 
   def no_sum(preamble)
     return [] if @numbers.empty?
-    if @numbers[2] == @numbers[1] + @numbers[0]
+    possible_sums = @numbers[0..-2].combination(2).to_a.map(&:sum)
+    if possible_sums.any?(@numbers[-1])
       []
     else
       return [@numbers[2]]
