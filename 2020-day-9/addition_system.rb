@@ -6,7 +6,12 @@ class AdditionSystem
 
   def no_sum(preamble)
     return [] if @numbers.empty?
-    [@numbers[2]]
+    if @numbers[2] == @numbers[1] + @numbers[0]
+      []
+    else
+      return [@numbers[2]]
+    end
+
   end
 
 end
