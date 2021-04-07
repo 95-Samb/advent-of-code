@@ -31,4 +31,18 @@ describe AdditionSystem do
 
   end
 
+  context "for no sum method with irrelevant preamble" do
+
+    it "returns blank for [5,1,2,3]" do
+      expect(AdditionSystem.new([5,1,2,3]).no_pair_sum(2)).
+      to eq([])
+    end
+
+    it "returns 3 for [1,5,6,3]" do
+      expect(AdditionSystem.new([1,5,6,3]).no_pair_sum(2)).
+      to eq([3])
+    end
+
+  end
+
 end
