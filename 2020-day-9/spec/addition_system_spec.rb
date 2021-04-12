@@ -43,9 +43,14 @@ describe AdditionSystem do
       to eq([3])
     end
 
-    it "returns 3 for [1,5,2,3]" do
+    it "returns 3 and 2 for [1,5,2,3]" do
       expect(AdditionSystem.new([1,5,2,3]).no_pair_sum(2).sort).
       to eq([3,2].sort)
+    end
+
+    it "returns 2 for [0,1,2,3]" do
+      expect(AdditionSystem.new([0,1,2,3]).no_pair_sum(2).sort).
+      to eq([2].sort)
     end
 
   end
