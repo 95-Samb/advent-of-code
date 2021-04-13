@@ -63,4 +63,16 @@ describe AdditionSystem do
 
   end
 
+  context "for continuous sum method" do
+
+    it "returns 1,2 for [1,2] and 3" do
+      expect(AdditionSystem.new([1,2]).continuous_sum(3)).to eq([1,2])
+    end
+
+    it "returns nil for [1,2] and 4" do
+      expect(AdditionSystem.new([1,2]).continuous_sum(4)).to eq(nil)
+    end
+
+  end
+
 end
