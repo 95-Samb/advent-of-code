@@ -25,8 +25,8 @@ class AdditionSystem
   end
 
   def continuous_sum(number)
-    return nil if @numbers.sum != number
-    @numbers
+    return @numbers[0..1] if @numbers[0..1].sum == number
+    nil
   end
 
 end
