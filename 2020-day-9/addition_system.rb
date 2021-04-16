@@ -26,6 +26,8 @@ class AdditionSystem
 
   def continuous_sum(number)
     return @numbers[0..1] if @numbers[0..1].sum == number
+    return @numbers[1..2] if @numbers[1..2].sum == number
+    return @numbers if @numbers.sum == number
     nil
   end
 

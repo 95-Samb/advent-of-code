@@ -77,6 +77,14 @@ describe AdditionSystem do
       expect(AdditionSystem.new([1,2,4]).continuous_sum(3)).to eq([1,2])
     end
 
+    it "returns 2,3 for [1,2,3] and 5" do
+      expect(AdditionSystem.new([1,2,3]).continuous_sum(5)).to eq([2,3])
+    end
+
+    it "returns 1,2,3 for [1,2,3] and 6" do
+      expect(AdditionSystem.new([1,2,3]).continuous_sum(6)).to eq([1,2,3])
+    end
+
   end
 
 end
