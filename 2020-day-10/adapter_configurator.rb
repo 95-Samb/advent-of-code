@@ -25,7 +25,8 @@ class AdapterConfigurator
   end
 
   def charging_arrangements
-    0
+    return 0 if @adapters == [0]
+    1
   end
 
 end
