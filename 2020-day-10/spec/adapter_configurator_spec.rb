@@ -9,7 +9,7 @@ describe AdapterConfigurator do
     end
 
     it "returns one difference of 1 for [1]" do
-      expect(AdapterConfigurator.new([1]).jolt_differences).to eq ({one: 1})
+      expect(AdapterConfigurator.new([1]).jolt_differences).to eq ({one: 1,three: 0})
     end
 
     it "returns one difference of 1 and one of 3 for [1,4]" do
