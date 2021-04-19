@@ -16,6 +16,10 @@ describe AdapterConfigurator do
       expect(AdapterConfigurator.new([1,4]).jolt_differences).to eq ({one: 1,three: 1})
     end
 
+    it "returns no relevant number of differences for [2,4]" do
+      expect(AdapterConfigurator.new([2,4]).jolt_differences).to eq ({one: 0,three: 0})
+    end
+
   end
 
 end
