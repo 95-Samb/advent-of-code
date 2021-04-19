@@ -34,4 +34,13 @@ describe AdapterConfigurator do
 
   end
 
+  context "#charging_arrangements" do
+
+    it "returns 0 for no adapters" do
+      expect(AdapterConfigurator.new([]).charging_arrangements).to eq 0
+    end
+
+  end
+
+
 end

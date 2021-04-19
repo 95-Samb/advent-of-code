@@ -24,4 +24,8 @@ class AdapterConfigurator
 
   end
 
+  def charging_arrangements
+    0
+  end
+
 end
