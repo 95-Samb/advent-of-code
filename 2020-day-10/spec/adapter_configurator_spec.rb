@@ -28,6 +28,10 @@ describe AdapterConfigurator do
       expect(AdapterConfigurator.new([4,2]).jolt_differences).to eq ({one: 0,three: 0})
     end
 
+    it "returns two difference of 1 and two of 3 for [8,4,7,1]" do
+      expect(AdapterConfigurator.new([8,4,7,1]).jolt_differences).to eq ({one: 2,three: 2})
+    end
+
   end
 
 end
