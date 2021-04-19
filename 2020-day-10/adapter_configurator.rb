@@ -5,7 +5,8 @@ class AdapterConfigurator
   end
 
   def jolt_differences
-    nil
+    return nil if @adapters.empty?
+    @adapters[0]
   end
 
 end
