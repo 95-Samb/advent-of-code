@@ -60,7 +60,7 @@ describe AdapterConfigurator do
       expect(AdapterConfigurator.new([1,3]).charging_arrangements).to eq 2
     end
 
-    xit "returns 1 for 1,4" do
+    it "returns 1 for 1,4" do
       expect(AdapterConfigurator.new([1,4]).charging_arrangements).to eq 1
     end
 

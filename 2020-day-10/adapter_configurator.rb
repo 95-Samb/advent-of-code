@@ -29,7 +29,7 @@ class AdapterConfigurator
 
     return 0 if @adapters.empty?
 
-    return 1 if @adapters.length == 1
+    return 1 if @adapters.length == 1 || @adapters.max > 3
 
     return 2 if @adapters.length == 2
 
