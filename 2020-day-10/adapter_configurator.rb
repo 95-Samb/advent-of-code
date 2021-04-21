@@ -29,7 +29,7 @@ class AdapterConfigurator
 
     return 0 if @adapters.empty?
 
-    (1..@adapters.sort[-1]).inject(:*)
+    (1..@adapters.length).inject(:*)
 
   end
 
