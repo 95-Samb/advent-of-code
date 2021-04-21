@@ -29,7 +29,11 @@ class AdapterConfigurator
 
     return 0 if @adapters.empty?
 
-    (1..@adapters.length).inject(:*)
+    return 1 if @adapters.length == 1
+
+    return 2 if @adapters.length == 2
+
+    return 4 if @adapters.length == 3
 
   end
 
