@@ -29,11 +29,8 @@ class AdapterConfigurator
 
     return 0 if @adapters.empty?
 
-    adapters_without_max = @adapters.sort[0..-2]
+    (1..@adapters.sort[-1]).inject(:*)
 
-    return 1 if adapters_without_max.empty?
-
-    1 + adapters_without_max.combination(adapters_without_max.length).to_a.length
   end
 
 end
