@@ -52,7 +52,7 @@ describe AdapterConfigurator do
       expect(AdapterConfigurator.new([2,1]).charging_arrangements).to eq 2
     end
 
-    it "returns 6 for 1,2,3" do
+    it "returns 4 for 1,2,3" do
       expect(AdapterConfigurator.new([1,2,3]).charging_arrangements).to eq 4
     end
 
@@ -62,6 +62,18 @@ describe AdapterConfigurator do
 
     it "returns 1 for 1,4" do
       expect(AdapterConfigurator.new([1,4]).charging_arrangements).to eq 1
+    end
+
+    it "returns 3 for 1,3,4" do
+      expect(AdapterConfigurator.new([1,3,4]).charging_arrangements).to eq 3
+    end
+
+    it "returns 1 for 3,6" do
+      expect(AdapterConfigurator.new([3,6]).charging_arrangements).to eq 1
+    end
+
+    it "returns 2 for 1,3,6" do
+      expect(AdapterConfigurator.new([1,3,6]).charging_arrangements).to eq 2
     end
 
 

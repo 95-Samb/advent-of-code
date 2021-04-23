@@ -29,7 +29,15 @@ class AdapterConfigurator
 
     return 0 if @adapters.empty?
 
-    return 1 if @adapters.length == 1 || @adapters.max > 3
+    if @adapters.max >= 4
+      next_numbers = @adapters.select { |num| num < @adapters.max &&
+        num >= @adapters.max - 3}
+      next_next_numbers = @adapters.select { |num| num < next_numbers.max &&
+        num >= next_numbers.max - 3}
+      return next_numbers.length + next_next_numbers.length
+    end
+
+    return 1 if @adapters.length == 1
 
     return 2 if @adapters.length == 2
 
