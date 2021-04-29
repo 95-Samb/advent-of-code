@@ -25,29 +25,25 @@ class AdapterConfigurator
   end
 
   def charging_arrangements
-    @adapters.shift
+    @adapters
 
     return 0 if @adapters.empty?
 
     number_to_check = @adapters.select { |num| num < @adapters.max &&
         num >= @adapters.max - 3}
 
-    if @adapters.max >= 4
-      next_next_numbers = @adapters.select { |num| num < number_to_check.max &&
-        num >= number_to_check.max - 3}
-      unless next_next_numbers.empty?
-        next_next_next_numbers = @adapters.select { |num| num < next_next_numbers.max &&
-          num >= next_next_numbers.max - 3}
-      else next_next_next_numbers = []
-      end
-      return number_to_check.length + next_next_numbers.length + next_next_next_numbers.length
+    5.times do
+      number_to_check.map! { |e|
+        if e == 0
+          0
+        else
+          e = @adapters.select { |num| num < e && num >= e - 3  }
+        end
+        }
+      number_to_check.flatten!
     end
 
-    return 1 if @adapters.length == 1
-
-    return 2 if @adapters.length == 2
-
-    return 4 if @adapters.length == 3
+    return number_to_check.length
 
   end
 
