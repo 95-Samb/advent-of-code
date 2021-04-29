@@ -32,7 +32,7 @@ class AdapterConfigurator
     number_to_check = @adapters.select { |num| num < @adapters.max &&
         num >= @adapters.max - 3}
 
-    5.times do
+    @adapters.length.times do
       number_to_check.map! { |e|
         if e == 0
           0

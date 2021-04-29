@@ -84,6 +84,13 @@ describe AdapterConfigurator do
       expect(AdapterConfigurator.new([1,2,4,6]).charging_arrangements).to eq 3
     end
 
+    subject = [28,33,18,42,31,14,46,20,48,47,24,23,49,45,19,
+      38,39,11,1,32,25,35,8,17,7,9,4,2,34,10,3]
+
+    it "returns 19208 for #{subject}" do
+      expect(AdapterConfigurator.new(subject).charging_arrangements).to eq 19208
+    end
+
 
   end
 
