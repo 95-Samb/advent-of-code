@@ -80,7 +80,7 @@ describe AdapterConfigurator do
       expect(AdapterConfigurator.new([1,2,3,6]).charging_arrangements).to eq 4
     end
 
-    it "returns 3 for 1,2,3,6" do
+    it "returns 3 for 1,2,4,6" do
       expect(AdapterConfigurator.new([1,2,4,6]).charging_arrangements).to eq 3
     end
 
@@ -91,6 +91,15 @@ describe AdapterConfigurator do
       expect(AdapterConfigurator.new(subject).charging_arrangements).to eq 19208
     end
 
+    #conjecture
+
+    subject2 = [1,2,3,4]
+
+    #use hash to propagate down to 0 ie start with max - 3 then calculate each based of number of occurences
+
+    it "returns summin for #{subject2}" do
+      expect(AdapterConfigurator.new(subject2).charging_arrangements).to eq "summin"
+    end
 
   end
 

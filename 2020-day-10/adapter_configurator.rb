@@ -27,23 +27,40 @@ class AdapterConfigurator
   def charging_arrangements
     @adapters
 
-    return 0 if @adapters.empty?
+    return 0 if @adapters == [0]
 
     number_to_check = @adapters.select { |num| num < @adapters.max &&
         num >= @adapters.max - 3}
 
+    number_hash = {}
+
+    path_total = 0
+
+    number_to_check.each { |e| number_hash[e] = 1}
+
     @adapters.length.times do
-      number_to_check.map! { |e|
-        if e == 0
-          0
-        else
-          e = @adapters.select { |num| num < e && num >= e - 3  }
-        end
-        }
-      number_to_check.flatten!
+      new_numbers = []
+      new_numbers_hash = {}
+      number_to_check.each { |e|
+        paths = @adapters.select { |num| num < e && num >= e - 3  }
+        paths.each { |num|
+          if new_numbers_hash[num]
+            new_numbers_hash[num] += number_hash[e]
+          else
+            new_numbers_hash[num] = number_hash[e]
+          end }
+        new_numbers.push(paths)
+      }
+
+      number_to_check = new_numbers.dup.flatten.uniq
+      path_total += new_numbers_hash[0] if new_numbers_hash[0]
+      number_hash = new_numbers_hash.dup
+
     end
 
-    return number_to_check.length
+    path_total += 1 if @adapters.max <= 3
+
+    return path_total
 
   end
 
