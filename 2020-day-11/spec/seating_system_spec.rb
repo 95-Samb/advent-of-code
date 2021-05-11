@@ -25,6 +25,16 @@ describe SeatingSystem do
         ).identify_adjacents([0,4])).to eq([".","L"])
     end
 
+    it "returns [L] for 0,0 and L,L" do
+      expect(SeatingSystem.new([["L"],["L"]]
+        ).identify_adjacents([0,0])).to eq(["L"])
+    end
+
+    it "returns [L] for 0,1 and L,L" do
+      expect(SeatingSystem.new([["L"],["L"]]
+        ).identify_adjacents([1,0])).to eq(["L"])
+    end
+
   end
 
 end
