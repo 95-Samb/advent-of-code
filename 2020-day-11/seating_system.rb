@@ -5,7 +5,13 @@ class SeatingSystem
   end
 
   def identify_adjacents(coords)
-    @seats[0][1] ? [@seats[0][1]] : []
+
+    if coords == [0,0]
+      [@seats[0][1]]
+    elsif  coords == [0,1]
+      [@seats[0][0]]
+    end
+
   end
 
 end
