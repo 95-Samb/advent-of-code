@@ -5,7 +5,7 @@ class SeatingSystem
   end
 
   def identify_adjacents(coords)
-    []
+    @seats[0][1] ? [@seats[0][1]] : []
   end
 
 end
