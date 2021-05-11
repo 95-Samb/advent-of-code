@@ -6,11 +6,16 @@ class SeatingSystem
 
   def identify_adjacents(coords)
 
-    if coords == [0,0]
-      [@seats[0][1]]
-    elsif  coords == [0,1]
-      [@seats[0][0]]
+    adjacents = []
+
+    if coords[1] - 1 >= 0
+      adjacents.push(@seats[coords[0]][coords[1] - 1])
     end
+    if coords[1] + 1 < @seats[0].length
+      adjacents.push(@seats[coords[0]][coords[1] + 1])
+    end
+
+    adjacents.flatten
 
   end
 

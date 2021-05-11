@@ -5,7 +5,7 @@ describe SeatingSystem do
   context "#identify_adjacents" do
 
     it "returns [] for 0,0 and #" do
-      expect(SeatingSystem.new([["#"]]).identify_adjacents([0,0])).to eq([nil])
+      expect(SeatingSystem.new([["#"]]).identify_adjacents([0,0])).to eq([])
     end
 
     it "returns [#] for 0,0 and ##" do
@@ -18,6 +18,11 @@ describe SeatingSystem do
 
     it "returns [L] for 0,1 and L#" do
       expect(SeatingSystem.new([["L","#"]]).identify_adjacents([0,1])).to eq(["L"])
+    end
+
+    it "returns [.L] for 0,4 and L#..LL." do
+      expect(SeatingSystem.new([["L","#",".",".","L","L","."]]
+        ).identify_adjacents([0,4])).to eq([".","L"])
     end
 
   end
