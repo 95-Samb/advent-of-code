@@ -6,6 +6,8 @@ class SeatingSystem
 
   def identify_adjacents(coords)
 
+    #needs refactoring
+
     adjacents = []
 
     if coords[1] - 1 >= 0
@@ -36,6 +38,16 @@ class SeatingSystem
 
     adjacents.flatten
 
+  end
+
+  def apply_rules
+    @seats.map { |row| row.map { |e|
+        if e == "L"
+          "#"
+        else e
+        end
+      }
+    }
   end
 
 end

@@ -48,4 +48,14 @@ describe SeatingSystem do
 
   end
 
+  context "#apply_rules"
+
+    it "returns . for ." do
+      expect(SeatingSystem.new([["."]]).apply_rules).to eq([["."]])
+    end
+
+    it "returns # for L" do
+      expect(SeatingSystem.new([["L"]]).apply_rules).to eq([["#"]])
+    end
+
 end
