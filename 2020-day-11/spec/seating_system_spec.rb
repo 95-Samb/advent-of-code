@@ -58,4 +58,19 @@ describe SeatingSystem do
       expect(SeatingSystem.new([["L"]]).apply_rules).to eq([["#"]])
     end
 
+    it "returns ##,## for LL,LL" do
+      expect(SeatingSystem.new([["L","L"],["L","L"]]).apply_rules).
+      to eq([["#","#"],["#","#"]])
+    end
+
+    it "returns ##,## for LL,##" do
+      expect(SeatingSystem.new([["L","L"],["#","#"]]).apply_rules).
+      to eq([["#","#"],["#","#"]])
+    end
+
+    it "returns #L#,#L# for ###,###" do
+      expect(SeatingSystem.new([["#","#","#"],["#","#","#"]]).apply_rules).
+      to eq([["#","L","#"],["#","L","#"]])
+    end
+
 end

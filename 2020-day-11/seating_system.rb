@@ -41,9 +41,11 @@ class SeatingSystem
   end
 
   def apply_rules
-    @seats.map { |row| row.map { |e|
+    @seats.map.with_index { |row , row_index| row.map.with_index { |e,i|
         if e == "L"
           "#"
+        elsif identify_adjacents([row_index,i]).count("#") >= 4 && e == "#"
+          "L"
         else e
         end
       }
