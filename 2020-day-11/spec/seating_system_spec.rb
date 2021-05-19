@@ -127,4 +127,12 @@ describe SeatingSystem do
       to eq(answer2)
     end
 
+    context "#solve_seating" do
+
+      it "returns #L#,#L# for LLL,LLL" do
+        expect(SeatingSystem.new([["L","L","L"],["L","L","L"]]).solve_seating).
+        to eq([["#","L","#"],["#","L","#"]])
+      end
+    end
+
 end

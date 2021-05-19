@@ -52,4 +52,16 @@ class SeatingSystem
     }
   end
 
+  def solve_seating
+
+    2.times do
+
+      @seats = apply_rules
+
+    end
+
+    @seats
+
+  end
+
 end
