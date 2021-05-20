@@ -48,7 +48,7 @@ describe SeatingSystem do
 
   end
 
-  context "#apply_rules"
+  context "#apply_rules" do
 
     it "returns . for ." do
       expect(SeatingSystem.new([["."]]).apply_rules).to eq([["."]])
@@ -126,13 +126,41 @@ describe SeatingSystem do
       expect(SeatingSystem.new(subject2).apply_rules).
       to eq(answer2)
     end
+  end
 
-    context "#solve_seating" do
+  context "#solve_seating" do
 
-      it "returns #L#,#L# for LLL,LLL" do
-        expect(SeatingSystem.new([["L","L","L"],["L","L","L"]]).solve_seating).
-        to eq([["#","L","#"],["#","L","#"]])
-      end
+    it "returns #L#,#L# for LLL,LLL" do
+      expect(SeatingSystem.new([["L","L","L"],["L","L","L"]]).solve_seating).
+      to eq([["#","L","#"],["#","L","#"]])
     end
+
+    subject = [["L",".","L","L",".","L","L",".","L","L"],
+            ["L","L","L","L","L","L","L",".","L","L"],
+            ["L",".","L",".","L",".",".","L",".","."],
+            ["L","L","L","L",".","L","L",".","L","L"],
+            ["L",".","L","L",".","L","L",".","L","L"],
+            ["L",".","L","L","L","L","L",".","L","L"],
+            [".",".","L",".","L",".",".",".",".","."],
+            ["L","L","L","L","L","L","L","L","L","L"],
+            ["L",".","L","L","L","L","L","L",".","L"],
+            ["L",".","L","L","L","L","L",".","L","L"]]
+
+    answer = [["#",".","#","L",".","L","#",".","#","#"],
+            ["#","L","L","L","#","L","L",".","L","#"],
+            ["L",".","#",".","L",".",".","#",".","."],
+            ["#","L","#","#",".","#","#",".","L","#"],
+            ["#",".","#","L",".","L","L",".","L","L"],
+            ["#",".","#","L","#","L","#",".","#","#"],
+            [".",".","L",".","L",".",".",".",".","."],
+            ["#","L","#","L","#","#","L","#","L","#"],
+            ["#",".","L","L","L","L","L","L",".","L"],
+            ["#",".","#","L","#","L","#",".","#","#"]]
+
+    it "returns #L#,#L# for LLL,LLL" do
+      expect(SeatingSystem.new(subject).solve_seating).
+      to eq(answer)
+    end
+  end
 
 end

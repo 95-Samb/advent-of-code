@@ -54,7 +54,9 @@ class SeatingSystem
 
   def solve_seating
 
-    2.times do
+    loop do
+
+      break if @seats == apply_rules
 
       @seats = apply_rules
 
