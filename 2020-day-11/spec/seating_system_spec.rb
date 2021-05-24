@@ -163,4 +163,17 @@ describe SeatingSystem do
     end
   end
 
+  context "#find_visibles" do
+
+    it "returns [] for L. and 0,0" do
+      expect(SeatingSystem.new([["L","."]]).find_visibles([0,0])).
+      to eq([])
+    end
+
+    it "returns [#] for L# and 0,0" do
+      expect(SeatingSystem.new([["L","#"]]).find_visibles([0,0])).
+      to eq(["#"])
+    end
+  end
+
 end

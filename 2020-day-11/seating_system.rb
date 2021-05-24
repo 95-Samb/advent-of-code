@@ -66,4 +66,12 @@ class SeatingSystem
 
   end
 
+  def find_visibles(coords)
+    if @seats[coords[0]][coords[1] + 1] == "#"
+      ["#"]
+    else
+      []
+    end
+  end
+
 end
