@@ -93,7 +93,89 @@ class SeatingSystem
       j += 1
     end
 
+    i = 1
+    loop do
+      if coords[0] + i >= @seats.length
+        break
+      end
+      if @seats[coords[0] + i][coords[1]] != "."
+        visibiles.push(@seats[coords[0] + i][coords[1]])
+        break
+      end
+      i += 1
+    end
+
+    j = 1
+    loop do
+      if coords[0] - j < 0
+        break
+      end
+      if @seats[coords[0] - j][coords[1]] != "."
+        visibiles.push(@seats[coords[0] - j][coords[1]])
+        break
+      end
+      j += 1
+    end
+
+    i = 1
+    j = 1
+    loop do
+      if coords[0] + i >= @seats.length || coords[1] + j >= @seats[0].length
+        break
+      end
+      if @seats[coords[0] + i][coords[1] + j] != "."
+        visibiles.push(@seats[coords[0] + i][coords[1] + j])
+        break
+      end
+      i += 1
+      j += 1
+    end
+
+    i = 1
+    j = 1
+    loop do
+      if coords[0] - i < 0 || coords[1] - j < 0
+        break
+      end
+      if @seats[coords[0] - i][coords[1] - j] != "."
+        visibiles.push(@seats[coords[0] - i][coords[1] - j])
+        break
+      end
+      i += 1
+      j += 1
+    end
+
+    i = 1
+    j = 1
+    loop do
+      if coords[0] + i >= @seats.length || coords[1] - j < 0
+        break
+      end
+      if @seats[coords[0] + i][coords[1] - j] != "."
+        visibiles.push(@seats[coords[0] + i][coords[1] - j])
+        break
+      end
+      i += 1
+      j += 1
+    end
+
+    i = 1
+    j = 1
+    loop do
+      if coords[0] - i < 0 || coords[1] + j >= @seats[0].length
+        break
+      end
+      if @seats[coords[0] - i][coords[1] + j] != "."
+        visibiles.push(@seats[coords[0] - i][coords[1] + j])
+        break
+      end
+      i += 1
+      j += 1
+    end
+
     visibiles
   end
+
+
 
 end
