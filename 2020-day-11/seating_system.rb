@@ -176,6 +176,33 @@ class SeatingSystem
     visibiles
   end
 
+  def apply_new_rules
+    @seats.map.with_index { |row , row_index| row.map.with_index { |e,i|
+        if e == "L" && !find_visibles([row_index,i]).any?("#")
+          "#"
+        elsif find_visibles([row_index,i]).count("#") >= 5 && e == "#"
+          "L"
+        else e
+        end
+      }
+    }
+  end
+
+  def new_solve_seating
+
+    loop do
+
+      break if @seats == apply_new_rules
+
+      @seats = apply_new_rules
+
+    end
+
+    @seats
+
+  end
+
+
 
 
 end
