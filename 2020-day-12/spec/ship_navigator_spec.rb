@@ -57,6 +57,16 @@ describe ShipNavigator do
       expect(position.instance_variable_get(:@data)).to eq([0,3,"east"])
 
     end
+
+    it "changes data to 0,3,east for N3" do
+
+      position = ShipNavigator.new
+      position.instance_variable_set(:@data, [0,2,"east"])
+      position.take_action("N3")
+
+      expect(position.instance_variable_get(:@data)).to eq([0,5,"east"])
+
+    end
   end
 
 end

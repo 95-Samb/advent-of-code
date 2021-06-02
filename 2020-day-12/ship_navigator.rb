@@ -6,12 +6,12 @@ class ShipNavigator
 
   def take_action(action)
     if action[0] == "E"
-      @data = [action[1].to_i,0,"east"]
+      @data[0] += action[1].to_i
     elsif action[0] == "N"
-      @data = [0,action[1].to_i,"east"]
+      @data[1] += action[1].to_i
     elsif action[0] == "S"
-      @data = [0,-action[1].to_i,"east"]
-    else @data = [-action[1].to_i,0,"east"]
+      @data[1] -= action[1].to_i
+    else @data[0] -= action[1].to_i
     end
   end
 
