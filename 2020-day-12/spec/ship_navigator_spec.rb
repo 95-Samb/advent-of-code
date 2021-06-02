@@ -67,6 +67,53 @@ describe ShipNavigator do
       expect(position.instance_variable_get(:@data)).to eq([0,5,"east"])
 
     end
+
+    it "changes data to 0,0,north for L90" do
+
+      position = ShipNavigator.new
+      position.take_action("L90")
+
+      expect(position.instance_variable_get(:@data)).to eq([0,0,"north"])
+
+    end
+
+    it "changes data to 0,0,south for L270" do
+
+      position = ShipNavigator.new
+      position.take_action("L270")
+
+      expect(position.instance_variable_get(:@data)).to eq([0,0,"south"])
+
+    end
+
+    it "changes data to 0,0,west for L180" do
+
+      position = ShipNavigator.new
+      position.take_action("L180")
+
+      expect(position.instance_variable_get(:@data)).to eq([0,0,"west"])
+
+    end
+
+    it "changes data to 0,0,east for L360" do
+
+      position = ShipNavigator.new
+      position.take_action("L360")
+
+      expect(position.instance_variable_get(:@data)).to eq([0,0,"east"])
+
+    end
+
+    it "changes data to 0,0,south for R90" do
+
+      position = ShipNavigator.new
+      position.take_action("R90")
+
+      expect(position.instance_variable_get(:@data)).to eq([0,0,"south"])
+
+    end
+
+
   end
 
 end
