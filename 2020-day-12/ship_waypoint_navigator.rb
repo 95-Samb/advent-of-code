@@ -14,6 +14,19 @@ class ShipWaypointNavigator
       @waypoint[0] += waypoint_direction_hash[action[0]][0]
       @waypoint[1] += waypoint_direction_hash[action[0]][1]
     end
+
+    cardinal_directions = waypoint_direction_hash.keys
+    if action[0] == "L"
+      horizontal = -@waypoint[1]
+      vertical = @waypoint[0]
+      @waypoint = [horizontal,vertical]
+    end
+
+    if action[0] == "R"
+      horizontal = @waypoint[1]
+      vertical = -@waypoint[0]
+      @waypoint = [horizontal,vertical]
+    end
   end
 
 end
