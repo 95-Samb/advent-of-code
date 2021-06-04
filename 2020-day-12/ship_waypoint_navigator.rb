@@ -1,7 +1,7 @@
 class ShipWaypointNavigator 
 
   def initialize
-    @position = [0,0,"E"]
+    @position = [0,0]
     @waypoint = [10,1]
   end
 
