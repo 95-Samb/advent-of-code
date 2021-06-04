@@ -27,6 +27,13 @@ class ShipWaypointNavigator
       vertical = -@waypoint[0]
       @waypoint = [horizontal,vertical]
     end
+
+    if action[0] == "F"
+
+      @position[0] += @waypoint[0] * action[1..-1].to_i
+      @position[1] += @waypoint[1] * action[1..-1].to_i
+
+    end
   end
 
 end
