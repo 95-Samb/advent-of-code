@@ -58,16 +58,6 @@ describe ShipNavigator do
 
     end
 
-    it "changes data to 0,3,east for N3" do
-
-      position = ShipNavigator.new
-      position.instance_variable_set(:@data, [0,2,"east"])
-      position.take_action("N3")
-
-      expect(position.instance_variable_get(:@data)).to eq([0,5,"east"])
-
-    end
-
     it "changes data to 0,0,north for L90" do
 
       position = ShipNavigator.new
@@ -110,6 +100,48 @@ describe ShipNavigator do
       position.take_action("R90")
 
       expect(position.instance_variable_get(:@data)).to eq([0,0,"south"])
+
+    end
+
+    it "changes data to 1,0,east for F1" do
+
+      position = ShipNavigator.new
+      position.take_action("F1")
+
+      expect(position.instance_variable_get(:@data)).to eq([1,0,"east"])
+
+    end
+
+    it "changes data to 11,0,east for F11" do
+
+      position = ShipNavigator.new
+      position.take_action("F11")
+
+      expect(position.instance_variable_get(:@data)).to eq([11,0,"east"])
+
+    end
+
+    context "for non 0,0,east starting point" do
+
+      it "changes data to 0,5,east for N3 and 0,2,east starting point" do
+
+        position = ShipNavigator.new
+        position.instance_variable_set(:@data, [0,2,"east"])
+        position.take_action("N3")
+
+        expect(position.instance_variable_get(:@data)).to eq([0,5,"east"])
+
+      end
+
+      it "changes data to 1,0,west for F1 and 0,0,west starting point" do
+
+        position = ShipNavigator.new
+        position.instance_variable_set(:@data,[0,0,"west"])
+        position.take_action("F1")
+
+        expect(position.instance_variable_get(:@data)).to eq([-1,0,"west"])
+
+      end
 
     end
 
