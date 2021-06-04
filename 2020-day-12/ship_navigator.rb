@@ -35,4 +35,14 @@ class ShipNavigator
     end
   end
 
+  def take_instructions(instructions)
+
+    i = 0
+    until i >= instructions.length
+      take_action(instructions[i])
+      i += 1
+    end
+
+  end
+
 end

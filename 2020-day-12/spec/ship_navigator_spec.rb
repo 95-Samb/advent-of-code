@@ -148,4 +148,33 @@ describe ShipNavigator do
 
   end
 
+  context "#take_instructions" do
+
+    it "returns 1,1,E for E1,N1" do
+      starting_position = ShipNavigator.new
+      starting_position.take_instructions(["E1","N1"])
+
+      expect(starting_position.instance_variable_get(:@data)).to eq([1,1,"E"])
+
+    end
+
+    it "returns 1,1,E for N1,E1" do
+      starting_position = ShipNavigator.new
+      starting_position.take_instructions(["N1","E1"])
+
+      expect(starting_position.instance_variable_get(:@data)).to eq([1,1,"E"])
+
+    end
+
+    it "returns -8,-8,N for E1,N1,W10,S10,F1,L90,F1" do
+      starting_position = ShipNavigator.new
+      starting_position.take_instructions(["E1","N1","W10","S10","F1","L90","F1"])
+
+      expect(starting_position.instance_variable_get(:@data)).to eq([-8,-8,"N"])
+
+    end
+
+  end
+
+
 end
