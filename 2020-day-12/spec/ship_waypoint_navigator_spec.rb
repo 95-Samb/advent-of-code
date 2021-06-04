@@ -74,6 +74,26 @@ describe ShipWaypointNavigator do
       expect(start.instance_variable_get(:@waypoint)).to eq([5,5])
 
     end
+
+    it "returns 0,0,E and 1,-10 for L270" do
+
+      start = ShipWaypointNavigator.new
+      start.take_action("L270")
+
+      expect(start.instance_variable_get(:@position)).to eq([0,0,"E"])
+      expect(start.instance_variable_get(:@waypoint)).to eq([1,-10])
+
+    end
+
+    it "returns 0,0,E and -1,10 for R270" do
+
+      start = ShipWaypointNavigator.new
+      start.take_action("R270")
+
+      expect(start.instance_variable_get(:@position)).to eq([0,0,"E"])
+      expect(start.instance_variable_get(:@waypoint)).to eq([-1,10])
+
+    end
   end
 
 end
