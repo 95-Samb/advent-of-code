@@ -1,0 +1,3 @@
+class ShuttleFinder
+
+end
