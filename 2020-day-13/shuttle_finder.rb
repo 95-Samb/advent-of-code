@@ -7,7 +7,8 @@ class ShuttleFinder
 
   def earliest_bus
     return nil if @buses.empty?
-    [@buses[0],@buses[0]]
+    earliest = @buses.select{ |bus| @time % bus == 0}.first
+    [earliest,earliest]
   end
 
 end
