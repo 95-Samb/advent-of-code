@@ -36,6 +36,10 @@ describe ShuttleFinder do
       expect(ShuttleFinder.new(8,[3,5,7]).earliest_bus).to eq ([3,9])
     end
 
+    it "returns 13,39 for 37,[13,15,17]" do
+      expect(ShuttleFinder.new(37,[13,15,17]).earliest_bus).to eq ([13,39])
+    end
+
   end
 
 end
