@@ -20,6 +20,14 @@ describe ConsecutiveBuses do
       expect(ConsecutiveBuses.new([5,7]).consecutive_start).to eq(20)
     end
 
+    it "returns 20 for 18,29" do
+      expect(ConsecutiveBuses.new([18,29]).consecutive_start).to eq(144)
+    end
+
+    xit "returns 3 for 1,2,5" do
+      expect(ConsecutiveBuses.new([1,2,5]).consecutive_start).to eq(3)
+    end
+
   end
 
 end
