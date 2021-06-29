@@ -36,7 +36,7 @@ describe ConsecutiveBuses do
       expect(ConsecutiveBuses.new([1,0]).consecutive_start).to eq(1)
     end
 
-    xit "returns 3 for 1,2,5" do
+    it "returns 3 for 1,2,5" do
       expect(ConsecutiveBuses.new([1,2,5]).consecutive_start).to eq(3)
     end
 
