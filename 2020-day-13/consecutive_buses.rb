@@ -11,28 +11,14 @@ class ConsecutiveBuses
 
     multipliers = [1] * @schedule.length
 
-    if @schedule[1]
+    i = @schedule.length - 1
 
-      until @schedule[1] * multipliers[1] - @schedule[0] * multipliers[0] == 1
+    until i == 0
 
-      @schedule[1] * multipliers[1] > @schedule[0] * multipliers[0] ?
-      multipliers[0] += 1 : multipliers[1] += 1
+      @schedule[i] * multipliers[i] - @schedule[0] * multipliers[0] == i ?
+      i -= 1  : @schedule[i] * multipliers[i] > @schedule[0] * multipliers[0] ?
+      multipliers[0] += 1 : multipliers[i] += 1
 
-      end
-    end
-
-    if @schedule[2]
-
-      until @schedule[1] * multipliers[1] - @schedule[0] * multipliers[0] == 1 &&
-        @schedule[2] * multipliers[2] - @schedule[1] * multipliers[1] == 1
-
-        @schedule[2] * multipliers[2] > @schedule[1] * multipliers[1] ?
-        @schedule[1] * multipliers[1] > @schedule[0] * multipliers[0] ?
-        multipliers[0] += 1 : multipliers[1] += 1: multipliers[2] += 1
-
-
-
-      end
     end
 
     @schedule[0] * multipliers[0]
