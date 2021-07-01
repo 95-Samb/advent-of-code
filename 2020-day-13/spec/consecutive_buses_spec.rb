@@ -48,6 +48,18 @@ describe ConsecutiveBuses do
       expect(ConsecutiveBuses.new([17,0,13,19]).consecutive_start).to eq(3417)
     end
 
+    it "returns 754018 for 67,7,59,61" do
+      expect(ConsecutiveBuses.new([67,7,59,61]).consecutive_start).to eq(754018)
+    end
+
+    it "returns 779210 for 67,0,7,59,61" do
+      expect(ConsecutiveBuses.new([67,0,7,59,61]).consecutive_start).to eq(779210)
+    end
+
+    xit "returns 1261476 for 67,7,0,59,61" do
+      expect(ConsecutiveBuses.new([67,7,0,59,61]).consecutive_start).to eq(1261476)
+    end
+
   end
 
 end
