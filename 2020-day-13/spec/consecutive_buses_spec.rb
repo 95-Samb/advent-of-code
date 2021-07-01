@@ -44,6 +44,10 @@ describe ConsecutiveBuses do
       expect(ConsecutiveBuses.new([3,5,13]).consecutive_start).to eq(24)
     end
 
+    it "returns 3417 for 17,0,13,19" do
+      expect(ConsecutiveBuses.new([17,0,13,19]).consecutive_start).to eq(3417)
+    end
+
   end
 
 end

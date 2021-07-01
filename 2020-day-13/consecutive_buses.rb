@@ -15,9 +15,19 @@ class ConsecutiveBuses
 
     until i == 0
 
-      @schedule[i] * multipliers[i] - @schedule[0] * multipliers[0] == i ?
-      i -= 1  : @schedule[i] * multipliers[i] > @schedule[0] * multipliers[0] ?
-      multipliers[0] += 1 : multipliers[i] += 1
+      if @schedule[i] * multipliers[i] - @schedule[0] * multipliers[0] == i
+
+        @schedule[i + 1] && @schedule[i + 1] * multipliers[i + 1] -
+        @schedule[0] * multipliers[0] != i + 1 ?
+
+        i += 1 : i -= 1
+
+      else
+
+        @schedule[i] * multipliers[i] > @schedule[0] * multipliers[0] ?
+        multipliers[0] += 1 : multipliers[i] += 1
+
+      end
 
     end
 
