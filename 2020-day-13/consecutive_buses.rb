@@ -19,21 +19,20 @@ class ConsecutiveBuses
 
         multipliers.map!.with_index {
           |multiplier,index|
-          ((@schedule[0] * multipliers[0]) / @schedule[index].to_f).ceil
-        }
 
-        # puts multipliers
+          @minimum_multiplier = ((@schedule[0] * multipliers[0])/ @schedule[index].to_f ).ceil
+
+          multiplier < @minimum_multiplier ? @minimum_multiplier : multiplier
+        }
 
         @schedule[i + 1] && @schedule[i + 1] * multipliers[i + 1] -
         @schedule[0] * multipliers[0] != i + 1 ?
 
         i += 1 : i -= 1
 
-
-
       else
 
-        @schedule[i] * multipliers[i] > @schedule[0] * multipliers[0] ?
+        @schedule[i] * multipliers[i] > @schedule[0] * multipliers[0] + i ?
         multipliers[0] += 1 : multipliers[i] += 1
 
       end

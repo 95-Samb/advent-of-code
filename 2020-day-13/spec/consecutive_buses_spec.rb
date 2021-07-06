@@ -4,7 +4,7 @@ describe ConsecutiveBuses do
 
   context "#consecutive_start" do
 
-    xcontext "pair of buses" do
+    context "pair of buses" do
 
       it "returns 1 for 1,2" do
         expect(ConsecutiveBuses.new([1,2]).consecutive_start).to eq(1)
@@ -39,7 +39,7 @@ describe ConsecutiveBuses do
       end
     end
 
-    xcontext "multiple buses" do
+    context "multiple buses" do
 
       it "returns 3 for 1,2,5" do
         expect(ConsecutiveBuses.new([1,2,5]).consecutive_start).to eq(3)
