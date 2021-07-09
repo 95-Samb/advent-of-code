@@ -75,4 +75,20 @@ describe ConsecutiveBuses do
 
   end
 
+  context "#multiple_difference" do
+
+    it "returns multipliers 2,1 and diff 1 for schedule 1,3" do
+      schedule = ConsecutiveBuses.new([1,3])
+      schedule.multiple_difference(1)
+      expect(schedule.instance_variable_get(:@multipliers)).to eq([2,1])
+    end
+
+    it "returns multipliers 3,1,1 and diff 2 for schedule 1,2,5" do
+      schedule = ConsecutiveBuses.new([1,2,5])
+      schedule.multiple_difference(2)
+      expect(schedule.instance_variable_get(:@multipliers)).to eq([2,1,1])
+    end
+
+  end
+
 end
