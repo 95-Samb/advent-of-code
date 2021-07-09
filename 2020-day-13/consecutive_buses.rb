@@ -14,26 +14,20 @@ class ConsecutiveBuses
 
     until i == 0
 
-      if @schedule[i] * @multipliers[i] - @schedule[0] * @multipliers[0] == i
+      multiple_difference(i)
 
-        @multipliers.map!.with_index {
-          |multiplier,index|
+      @multipliers.map!.with_index {
+        |multiplier,index|
 
-          @minimum_multiplier = ((@schedule[0] * @multipliers[0])/ @schedule[index].to_f ).ceil
+        @minimum_multiplier = ((@schedule[0] * @multipliers[0])/ @schedule[index].to_f ).ceil
 
-          multiplier < @minimum_multiplier ? @minimum_multiplier : multiplier
-        }
+        multiplier < @minimum_multiplier ? @minimum_multiplier : multiplier
+      }
 
-        @schedule[i + 1] && @schedule[i + 1] * @multipliers[i + 1] -
-        @schedule[0] * @multipliers[0] != i + 1 ?
+      @schedule[i + 1] && @schedule[i + 1] * @multipliers[i + 1] -
+      @schedule[0] * @multipliers[0] != i + 1 ?
 
-        i += 1 : i -= 1
-
-      else
-
-        multiple_difference(i)
-
-      end
+      i += 1 : i -= 1
 
     end
 
@@ -42,8 +36,10 @@ class ConsecutiveBuses
   end
 
   def multiple_difference(diff)
-    @schedule[diff] * @multipliers[diff] > @schedule[0] * @multipliers[0] + diff ?
-    @multipliers[0] += 1 : @multipliers[diff] += 1
+    until @schedule[diff] * @multipliers[diff] - @schedule[0] * @multipliers[0] == diff
+      @schedule[diff] * @multipliers[diff] > @schedule[0] * @multipliers[0] + diff ?
+      @multipliers[0] += 1 : @multipliers[diff] += 1
+    end
   end
 
 end
