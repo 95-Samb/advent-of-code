@@ -23,16 +23,8 @@ class TestExecute(unittest.TestCase):
 
 	def test_first(self):
 
-		calculator = IncreaseCalculator()
-
-		calculator.execute([1,2])
-
-		self.assertEqual(calculator.increase_count,1)
+		self.assertEqual(IncreaseCalculator().execute([1,2]),1)
 
 	def test_second(self):
 
-		calculator = IncreaseCalculator()
-
-		calculator.execute([1,2,3,2,1])
-
-		self.assertEqual(calculator.increase_count,2)
+		self.assertEqual(IncreaseCalculator().execute([1,2,3,2,1]),2)
