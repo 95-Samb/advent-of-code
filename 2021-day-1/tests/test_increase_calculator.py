@@ -5,7 +5,7 @@ class TestIncreaseCounter(unittest.TestCase):
 
 	def test_first(self):
 
-		calculator = IncreaseCalculator()
+		calculator = IncreaseCalculator(0)
 
 		calculator.increase_counter(1,2)
 
@@ -13,7 +13,7 @@ class TestIncreaseCounter(unittest.TestCase):
 
 	def test_second(self):
 
-		calculator = IncreaseCalculator()
+		calculator = IncreaseCalculator(0)
 
 		calculator.increase_counter(2,1)
 
@@ -23,8 +23,8 @@ class TestExecute(unittest.TestCase):
 
 	def test_first(self):
 
-		self.assertEqual(IncreaseCalculator().execute([1,2]),1)
+		self.assertEqual(IncreaseCalculator([1,2]).execute(),1)
 
 	def test_second(self):
 
-		self.assertEqual(IncreaseCalculator().execute([1,2,3,2,1]),2)
+		self.assertEqual(IncreaseCalculator([1,2,3,2,1]).execute(),2)
